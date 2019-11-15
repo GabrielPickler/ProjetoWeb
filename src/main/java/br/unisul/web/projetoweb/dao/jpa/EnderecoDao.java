@@ -7,9 +7,6 @@ import javax.persistence.EntityManager;
 import br.unisul.web.projetoweb.dao.JPAUtil;
 import br.unisul.web.projetoweb.model.Endereco;
 
-
-
-
 public class EnderecoDao {
     private EntityManager entityManager = JPAUtil.getEntityManager();
     public boolean save(Endereco endereco) {

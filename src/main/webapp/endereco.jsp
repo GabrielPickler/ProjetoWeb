@@ -81,8 +81,13 @@
     <body>
     <!-- Inicio do formulario -->
       <form method="get" action="endereco.jsp">
-        <label>Cep:
-        <br><input name="cep" type="text" id="cep" value="" size="10" maxlength="9" /></label><br />
+      	<label>login:
+      	<br><input name="login" type="text" id="login" required="required"/></label><br />
+      	<label>senha:
+      	<br><input name="senha" type="password" id="senha" required="required"/></label><br />
+      	</label>
+        <label>Cep *:
+        <br><input name="cep" type="text" id="cep" value="" size="10" maxlength="9" required="required"/></label><br />
         <label>Rua:
         <br><input name="rua" type="text" id="rua" size="60" /></label><br />
         <label>Bairro:
@@ -91,6 +96,7 @@
         <br><input name="cidade" type="text" id="cidade" size="40" /></label><br />
         <label>Estado:
         <br><input name="uf" type="text" id="uf" size="2" /></label><br />
+        <br><input type="submit" value = "Cadastrar">
       </form>
     </body>
     </html>
