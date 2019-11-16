@@ -2,6 +2,7 @@ package br.unisul.web.projetoweb.dao.jpa;
 
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 
 import br.unisul.web.projetoweb.dao.JPAUtil;

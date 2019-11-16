@@ -21,7 +21,7 @@
                 $("#rua").val("");
                 $("#bairro").val("");
                 $("#cidade").val("");
-                $("#uf").val("");
+	                $("#uf").val("");
             }
             
             //Quando o campo cep perde o foco.
@@ -80,7 +80,11 @@
 
     <body>
     <!-- Inicio do formulario -->
+<<<<<<< HEAD
       <form method="post" action="login.jsp">
+=======
+      <form method="post" action="/projetoweb/cadastrousuario">
+>>>>>>> d3ec90b9c376ceac0a3c34dae28b0e4715128d8a
       <b><font size="10">Cadastro de Usuário</font></b><br><br>
       	<label>Login *:
       	<br><input name="login" type="text" id="login" required="required"/></label><br />
