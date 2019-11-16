@@ -81,15 +81,31 @@
     <body>
     <!-- Inicio do formulario -->
       <form method="get" action="endereco.jsp">
-      	<label>login:
+      <b><font size="10">Cadastro de Usuário</font></b><br><br>
+      	<label>Login:
       	<br><input name="login" type="text" id="login" required="required"/></label><br />
-      	<label>senha:
+      	<label>Senha:
       	<br><input name="senha" type="password" id="senha" required="required"/></label><br />
+      	<label>Confirme sua senha:
+      	<br><input name="csenha" type="password" id="csenha" required="required"/></label><br />
       	</label>
-        <label>Cep *:
+      	<br><label><b>Dados Pessoais</b></label><br>
+      	<br><label>Nome:
+      	<br><input name="nome" type="text" id="nome" required="required"/></label><br />
+      	<label>Data de Nascimento:
+      	<br><input name="nascimento" type="date" id="nascimento" required="required"/></label><br />
+      	<label>Sexo:
+      	<input name="sexo" type="radio" id="sexo" value="Masculino" required="required"/><label>Masculino</label>
+     	<input name="sexo" type="radio" id="sexo" value="Feminino" required="required"/><label>Feminino</label><br />
+      	</label>
+        <br><label>Cep *:
         <br><input name="cep" type="text" id="cep" value="" size="10" maxlength="9" required="required"/></label><br />
         <label>Rua:
         <br><input name="rua" type="text" id="rua" size="60" /></label><br />
+        <label>Número:
+        <br><input name="numero" type="number" id="numero" size="10" /></label><br />
+        <label>Complemento:
+        <br><input name="complemento" type="text" id="complemento" size="60" /></label><br />
         <label>Bairro:
         <br><input name="bairro" type="text" id="bairro" size="40" /></label><br />
         <label>Cidade:
