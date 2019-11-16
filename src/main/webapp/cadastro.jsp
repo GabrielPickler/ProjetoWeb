@@ -21,7 +21,7 @@
                 $("#rua").val("");
                 $("#bairro").val("");
                 $("#cidade").val("");
-                $("#uf").val("");
+	                $("#uf").val("");
             }
             
             //Quando o campo cep perde o foco.
@@ -80,7 +80,7 @@
 
     <body>
     <!-- Inicio do formulario -->
-      <form method="get" action="endereco.jsp">
+      <form method="post" action="/projetoweb/cadastrousuario">
       <b><font size="10">Cadastro de Usuário</font></b><br><br>
       	<label>Login:
       	<br><input name="login" type="text" id="login" required="required"/></label><br />

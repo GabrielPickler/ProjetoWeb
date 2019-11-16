@@ -32,13 +32,14 @@ public class Produto {
 
 	@ManyToMany(mappedBy = "produtos")
 	private List<Usuario> usuario = new ArrayList<Usuario>();
+	
 
 	public Produto(int idProduto) {
 		this.setIdProduto(idProduto);
 	}
 
 	public Produto() {
-	}
+	}	
 
 	public List<Usuario> getUsuario() {
 		return usuario;
@@ -91,7 +92,7 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-
+	
 	public void addUsuario(Usuario usuario) {
 		this.usuario.add(usuario);
 	}

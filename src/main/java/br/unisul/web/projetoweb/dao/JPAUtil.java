@@ -11,7 +11,7 @@ public class JPAUtil {
 
     public static EntityManager getEntityManager(){
         if (entityManagerFactory==null){
-            entityManagerFactory= Persistence.createEntityManagerFactory("persistenciaWeb");
+            entityManagerFactory= Persistence.createEntityManagerFactory("persistenciaDisciplina");
         }
         return entityManagerFactory.createEntityManager();
     }
