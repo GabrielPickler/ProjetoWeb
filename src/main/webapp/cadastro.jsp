@@ -3,7 +3,7 @@
 
     <!doctype html>
     <head>
-    <title>ViaCEP Webservice</title>
+    <title>Cadastro</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Adicionando JQuery -->
@@ -80,21 +80,21 @@
 
     <body>
     <!-- Inicio do formulario -->
-      <form method="get" action="endereco.jsp">
+      <form method="post" action="login.jsp">
       <b><font size="10">Cadastro de Usuário</font></b><br><br>
-      	<label>Login:
+      	<label>Login *:
       	<br><input name="login" type="text" id="login" required="required"/></label><br />
-      	<label>Senha:
+      	<label>Senha *:
       	<br><input name="senha" type="password" id="senha" required="required"/></label><br />
-      	<label>Confirme sua senha:
+      	<label>Confirme sua senha *:
       	<br><input name="csenha" type="password" id="csenha" required="required"/></label><br />
       	</label>
       	<br><label><b>Dados Pessoais</b></label><br>
-      	<br><label>Nome:
+      	<br><label>Nome *:
       	<br><input name="nome" type="text" id="nome" required="required"/></label><br />
-      	<label>Data de Nascimento:
+      	<label>Data de Nascimento *:
       	<br><input name="nascimento" type="date" id="nascimento" required="required"/></label><br />
-      	<label>Sexo:
+      	<br><label>Sexo *:
       	<input name="sexo" type="radio" id="sexo" value="Masculino" required="required"/><label>Masculino</label>
      	<input name="sexo" type="radio" id="sexo" value="Feminino" required="required"/><label>Feminino</label><br />
       	</label>

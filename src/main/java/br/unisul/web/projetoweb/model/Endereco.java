@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Endereco {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idEndereco")
 	private int idEndereco;
 
@@ -38,6 +38,17 @@ public class Endereco {
 	private Usuario usuario;
 
 	public Endereco() {
+	}
+
+	public Endereco(int numero, String complemento, String cep, String rua, String bairro,
+			String cidade, String estado) {
+		this.numero = numero;
+		this.complemento = complemento;
+		this.cep = cep;
+		this.rua = rua;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.estado = estado;
 	}
 
 	public Endereco(int idEndereco, String cep, String rua, String bairro, String cidade, String estado, int numero,

@@ -6,6 +6,9 @@
 
     <persistence-unit name="persistenciaDisciplina">
     	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    	<class>br.unisul.web.projetoweb.model.Usuario</class>
+    	<class>br.unisul.web.projetoweb.model.Produto</class>
+    	<class>br.unisul.web.projetoweb.model.Endereco</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/projetoWeb" />

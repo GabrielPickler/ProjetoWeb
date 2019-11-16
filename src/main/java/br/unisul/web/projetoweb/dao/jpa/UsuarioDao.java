@@ -19,8 +19,8 @@ public class UsuarioDao {
 	        return false;
 	    }
 
-	    public List<Endereco> findAll() {
-	        return entityManager.createQuery("SELECT u from jpa_usuario u", Endereco.class).getResultList();
+	    public List<Usuario> findAll() {
+	        return entityManager.createQuery("SELECT u from jpa_usuario u", Usuario.class).getResultList();
 	    }
 
 	    public boolean delete(int idUsuario) {

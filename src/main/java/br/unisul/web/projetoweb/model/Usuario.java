@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idUsuario")
 	private int idUsuario;
 	@Column(name = "login", length = 100)
@@ -32,7 +32,7 @@ public class Usuario {
 	@Column(name = "datanascimento")
 	private Date nascimento;
 	@Column(name = "idade", length = 3)
-	private int idade;
+	private long idade;
 	@Column(name = "sexo", length = 10)
 	private String sexo;
 	@OneToOne
@@ -48,16 +48,12 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(int idUsuario, String login, String password, String nome, Date nascimento, int idade, String sexo,
-			Endereco endereco) {
-		this.idUsuario = idUsuario;
+	public Usuario(String login, String password, String nome, Date nascimento, String sexo) {
 		this.login = login;
 		this.password = password;
 		this.nome = nome;
 		this.nascimento = nascimento;
-		this.idade = idade;
 		this.sexo = sexo;
-		this.endereco = endereco;
 	}
 
 	public List<Produto> getProdutos() {
@@ -104,11 +100,11 @@ public class Usuario {
 		this.nascimento = nascimento;
 	}
 
-	public int getIdade() {
+	public long getIdade() {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
+	public void setIdade(long idade) {
 		this.idade = idade;
 	}
 
