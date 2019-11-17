@@ -42,9 +42,10 @@ public class cadastroController extends HttpServlet {
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		String confirmaSenha = request.getParameter("csenha");
-		if (confirmaSenha != senha) {
+		if (!confirmaSenha.equals(senha)) {
 			RequestDispatcher despachar = request.getRequestDispatcher("cadastro.jsp");
 			despachar.forward(request, response);
+			System.out.println("erro senha");
 		}
 		String nome = request.getParameter("nome");
 		Date nascimento = null;
@@ -66,7 +67,7 @@ public class cadastroController extends HttpServlet {
 		c.setTime(nascimento);
 
 		int ano = c.get(Calendar.YEAR);
-		int mes = c.get(Calendar.DAY_OF_MONTH + 1);
+		int mes = 1 + c.get(Calendar.MONTH);
 		int dia = c.get(Calendar.DAY_OF_MONTH);
 		LocalDate start = LocalDate.of(ano, mes, dia);
 		LocalDate end = LocalDate.now();
