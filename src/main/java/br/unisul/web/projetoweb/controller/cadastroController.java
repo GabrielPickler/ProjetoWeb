@@ -23,7 +23,7 @@ import br.unisul.web.projetoweb.dao.jpa.UsuarioDao;
 import br.unisul.web.projetoweb.model.Endereco;
 import br.unisul.web.projetoweb.model.Usuario;
 
-@WebServlet("/cadastrousuario")
+@WebServlet("/cadastroController")
 public class cadastroController extends HttpServlet {
 
 	private UsuarioDao usuarioDao = new UsuarioDao();
