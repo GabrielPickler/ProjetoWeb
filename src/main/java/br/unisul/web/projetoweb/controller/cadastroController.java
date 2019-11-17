@@ -37,31 +37,28 @@ public class cadastroController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-		String login = request.getParameter("login");
-		String senha = request.getParameter("senha");
-		String confirmaSenha = request.getParameter("csenha");
-		if (!confirmaSenha.equals(senha)) {
-			RequestDispatcher despachar = request.getRequestDispatcher("cadastro.jsp");
-			despachar.forward(request, response);
-			System.out.println("erro senha");
-		}
-		String nome = request.getParameter("nome");
-		Date nascimento = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			nascimento = sdf.parse(request.getParameter("nascimento"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		String sexo = request.getParameter("sexo");
-		String cep = request.getParameter("cep");
-		int numero = Integer.parseInt(request.getParameter("numero"));
-		String complemento = request.getParameter("complemento");
-		String rua = request.getParameter("rua");
-		String bairro = request.getParameter("bairro");
-		String cidade = request.getParameter("cidade");
-		String uf = request.getParameter("uf");
+			String login = request.getParameter("login");
+			String senha = request.getParameter("senha");
+			String confirmaSenha = request.getParameter("csenha");
+			if (!confirmaSenha.equals(senha)) {
+				RequestDispatcher despachar = request.getRequestDispatcher("cadastro.jsp");
+				despachar.forward(request, response);
+				System.out.println("erro senha");
+			}
+			String nome = request.getParameter("nome");
+			Date nascimento = sdf.parse(request.getParameter("nascimento"));
+
+			String sexo = request.getParameter("sexo");
+			String cep = request.getParameter("cep");
+			int numero = Integer.parseInt(request.getParameter("numero"));
+			String complemento = request.getParameter("complemento");
+			String rua = request.getParameter("rua");
+			String bairro = request.getParameter("bairro");
+			String cidade = request.getParameter("cidade");
+			String uf = request.getParameter("uf");
+
 
 		Calendar c = Calendar.getInstance();
 		c.setTime(nascimento);
@@ -72,7 +69,7 @@ public class cadastroController extends HttpServlet {
 		LocalDate start = LocalDate.of(ano, mes, dia);
 		LocalDate end = LocalDate.now();
 		long years = ChronoUnit.YEARS.between(start, end);
-		
+
 		Endereco endereco = new Endereco();
 		endereco.setCep(cep);
 		endereco.setNumero(numero);
@@ -81,7 +78,7 @@ public class cadastroController extends HttpServlet {
 		endereco.setBairro(bairro);
 		endereco.setCidade(cidade);
 		endereco.setEstado(uf);
-		
+
 		Usuario usuario = new Usuario();
 		usuario.setIdade(years);
 		usuario.setEndereco(endereco);
@@ -90,16 +87,14 @@ public class cadastroController extends HttpServlet {
 		usuario.setNome(nome);
 		usuario.setPassword(senha);
 		usuario.setSexo(sexo);
-		
+
 		salvaUsuario(usuario);
-		//salvaEndereco(endereco);
 
 		response.sendRedirect("login.jsp");
-
-	}
-
-	private void salvaEndereco(Endereco endereco) {
-		enderecoDao.save(endereco);
+		
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
 	}
 
