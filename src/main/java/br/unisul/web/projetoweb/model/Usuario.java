@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,8 @@ public class Usuario {
 	private long idade;
 	@Column(name = "sexo", length = 10)
 	private String sexo;
-	@OneToOne
+	 @OneToOne(cascade = CascadeType.ALL)
+	 @JoinColumn(name = "idEndereco", referencedColumnName = "idEndereco")
 	private Endereco endereco;
 	@ManyToMany
 	@JoinTable(name = "jpa_usuario_produto", joinColumns = @JoinColumn(name = "idUsuario"), inverseJoinColumns = @JoinColumn(name = "idProduto"))

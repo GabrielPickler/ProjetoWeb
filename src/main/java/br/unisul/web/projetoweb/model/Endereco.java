@@ -34,7 +34,7 @@ public class Endereco {
 	@Column(name = "estado", length = 2)
 	private String estado;
 
-	@OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "endereco")
 	private Usuario usuario;
 
 	public Endereco() {
