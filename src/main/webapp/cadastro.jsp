@@ -1,10 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     <!doctype html>
+    <html>
     <head>
     <title>Cadastro</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    	<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	    <style>
+	    body{
+	    background-color: #f5f5f5;
+	    }
+
+	      .bd-placeholder-img {
+	        font-size: 1.000rem;
+	        text-anchor: middle;
+	        -webkit-user-select: none;
+	        -moz-user-select: none;
+	        -ms-user-select: none;
+	        user-select: none;
+	      }
+	
+	      @media (min-width: 600px) {
+	        .bd-placeholder-img-lg {
+	          font-size: 3.5rem;
+	        }
+	      }  
+      </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Adicionando JQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -13,11 +35,9 @@
 
     <!-- Adicionando Javascript -->
     <script type="text/javascript" >
-
         $(document).ready(function() {
-
-            function limpa_formul·rio_cep() {
-                // Limpa valores do formul·rio de cep.
+            function limpa_formul√°rio_cep() {
+                // Limpa valores do formul√°rio de cep.
                 $("#rua").val("");
                 $("#bairro").val("");
                 $("#cidade").val("");
@@ -26,28 +46,21 @@
             
             //Quando o campo cep perde o foco.
             $("#cep").blur(function() {
-
-                //Nova vari·vel "cep" somente com dÌgitos.
+                //Nova vari√°vel "cep" somente com d√≠gitos.
                 var cep = $(this).val().replace(/\D/g, '');
-
                 //Verifica se campo cep possui valor informado.
                 if (cep != "") {
-
-                    //Express„o regular para validar o CEP.
+                    //Express√£o regular para validar o CEP.
                     var validacep = /^[0-9]{8}$/;
-
                     //Valida o formato do CEP.
                     if(validacep.test(cep)) {
-
                         //Preenche os campos com "..." enquanto consulta webservice.
                         $("#rua").val("...");
                         $("#bairro").val("...");
                         $("#cidade").val("...");
                         $("#uf").val("...");
-
                         //Consulta o webservice viacep.com.br/
                         $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-
                             if (!("erro" in dados)) {
                                 //Atualiza os campos com os valores da consulta.
                                 $("#rua").val(dados.logradouro);
@@ -56,65 +69,135 @@
                                 $("#uf").val(dados.uf);                
                             } //end if.
                             else {
-                                //CEP pesquisado n„o foi encontrado.
-                                limpa_formul·rio_cep();
-                                alert("CEP n„o encontrado.");
+                                //CEP pesquisado n√£o foi encontrado.
+                                limpa_formul√°rio_cep();
+                                alert("CEP n√£o encontrado.");
                             }
                         });
                     } //end if.
                     else {
-                        //cep È inv·lido.
-                        limpa_formul·rio_cep();
-                        alert("Formato de CEP inv·lido.");
+                        //cep √© inv√°lido.
+                        limpa_formul√°rio_cep();
+                        alert("Formato de CEP inv√°lido.");
                     }
                 } //end if.
                 else {
-                    //cep sem valor, limpa formul·rio.
-                    limpa_formul·rio_cep();
+                    //cep sem valor, limpa formul√°rio.
+                    limpa_formul√°rio_cep();
                 }
             });
         });
-
     </script>
-    </head>
-
-    <body>
-    <!-- Inicio do formulario -->
-
-      <form method="post" action="cadastroController">
-      <b><font size="10">Cadastro de Usu·rio</font></b><br><br>
-      	<label>Login *:
-      	<br><input name="login" type="text" id="login" required="required"/></label><br />
-      	<label>Senha *:
-      	<br><input name="senha" type="password" id="senha" required="required"/></label><br />
-      	<label>Confirme sua senha *:
-      	<br><input name="csenha" type="password" id="csenha" required="required"/></label><br />
-      	</label>
-      	<br><label><b>Dados Pessoais</b></label><br>
-      	<br><label>Nome *:
-      	<br><input name="nome" type="text" id="nome" required="required"/></label><br />
-      	<label>Data de Nascimento *:
-      	<br><input name="nascimento" type="date" id="nascimento" required="required"/></label><br />
-      	<br><label>Sexo *:
-      	<input name="sexo" type="radio" id="sexo" value="Masculino" required="required"/><label>Masculino</label>
-     	<input name="sexo" type="radio" id="sexo" value="Feminino" required="required"/><label>Feminino</label><br />
-      	</label>
-        <br><label>Cep *:
-        <br><input name="cep" type="text" id="cep" value="" size="10" maxlength="9" required="required"/></label><br />
-        <label>Rua:
-        <br><input name="rua" type="text" id="rua" size="60" /></label><br />
-        <label>N˙mero:
-        <br><input name="numero" type="number" id="numero" size="10" /></label><br />
-        <label>Complemento:
-        <br><input name="complemento" type="text" id="complemento" size="60" /></label><br />
-        <label>Bairro:
-        <br><input name="bairro" type="text" id="bairro" size="40" /></label><br />
-        <label>Cidade:
-        <br><input name="cidade" type="text" id="cidade" size="40" /></label><br />
-        <label>Estado:
-        <br><input name="uf" type="text" id="uf" size="2" /></label><br />
-        <br><input type="submit" value = "Cadastrar">
-      </form>
-    </body>
-    </html>
+      </head>
+      
+ <body>
+	<b><font size="10">Cadastro de Usu√°rio</font></b>
+	<br>
+	<br>
+	<form class="needs-validation" novalidate action="cadastroController">
+		<div class="col-md-4 mb-3">
+			<label for="usuario">Usu√°rio *</label> <input type="text"
+				class="form-control" id="usuario"
+				placeholder="Digite seu usu√°rio" value="" required="required" name = "login">
+			<div class="invalid-tooltip">
+          Por favor, digite seu usu√°rio.
+ 			</div>
+		</div>
+		<div class="col-md-4 mb-3">
+			<label for="senha">Senha *</label> <input type="password"
+				name="senha" class="form-control" id="senha"
+				placeholder="Digite sua senha" value="" required="required">
+			<div class="invalid-tooltip">Por favor, digite sua senha.</div>
+		</div>
+		<div class="col-md-4 mb-3">
+			<label for="csenha">Confirmar a senha *</label> <input
+				type="password" name="csenha" class="form-control"
+				id="csenha" placeholder="Confirme sua senha" value=""
+				required="required">
+			<div class="invalid-tooltip">Confirme sua senha *</div>
+		</div>
+		<label><b>Dados Pessoais</b></label>
+		<div class="col-md-3 mb-3">
+			<label for="nome">Nome *</label> <input type="text"
+				class="form-control" name="nome" id="nome"
+				placeholder="Digite seu nome" required = "required">
+			<div class="invalid-tooltip">Por favor, digite seu nome.</div>
+		</div>
+		<div class="col-md-3 mb-3">
+			<label for="nascimento">Data de nascimento *</label> <input
+				type="date" class="form-control" name="nascimento"
+				id="nascimento" required = "required">
+			<div class="invalid-tooltip">Por favor, preencha sua data de nascimento.</div>
+		</div>
+		<div class="col-md-3 mb-3">
+			<label for="sexo">Sexo *</label> <input type="radio"
+				name="sexo" id="sexo" value = "Masculino"
+				placeholder="Digite seu nome" required = "required"><label> Masculino</label>
+				<input type="radio"
+				name="sexo" id="sexo" value = "Feminino"
+				placeholder="Digite seu nome" required = "required"><label> Feminino</label>
+			<div class="invalid-tooltip">Por favor, selecione seu sexo.</div>
+		</div>
+		<div class="col-md-3 mb-3">
+			<label for="validationTooltip05">CEP *</label> <input type="text"
+				class="form-control" name="cep" id="cep" placeholder="CEP" required = "required">
+			<div class="invalid-tooltip">Digite seu CEP.</div>
+		</div>
+		<div class="form-row">
+			<div class="col-md-6 mb-3">
+				<label for="validationTooltip03">Logradouro</label> <input
+					type="text" class="form-control" name="rua" id="rua"
+					placeholder="Logradouro">
+			</div>
+			<div class="col-md-3 mb-3">
+				<label for="validationTooltip04">N√∫mero</label> <input type="text"
+					class="form-control" name="numero" id="numero"
+					placeholder="N√∫mero">				
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="col-md-3 mb-3">
+				<label for="complemento">Complemento</label> <input
+					type="text" class="form-control" name="complemento"
+					id="complemento" placeholder="Complemento">
+			</div>
+			<div class="col-md-3 mb-3">
+				<label for="uf">Estado</label> <input type="text"
+					class="form-control" name="uf" id="uf"
+					placeholder="Digite seu estado">
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="col-md-3 mb-3">
+				<label for="cidade">Cidade</label> <input type="text"
+					class="form-control" name="cidade" id="cidade"
+					placeholder="Digite sua cidade">
+			</div>
+			<div class="col-md-3 mb-3">
+				<label for="bairro">Bairro</label> <input type="text"
+					class="form-control" name="bairro" id="bairro"
+					placeholder="Digite seu bairro">
+			</div>
+		</div>
+		<button class="btn btn-primary" type="submit">Cadastrar</button>
+	</form>
+	<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+</body>
+</html>
 

@@ -52,7 +52,7 @@ public class cadastroController extends HttpServlet {
 
 			String sexo = request.getParameter("sexo");
 			String cep = request.getParameter("cep");
-			int numero = Integer.parseInt(request.getParameter("numero"));
+			String numero = request.getParameter("numero");
 			String complemento = request.getParameter("complemento");
 			String rua = request.getParameter("rua");
 			String bairro = request.getParameter("bairro");

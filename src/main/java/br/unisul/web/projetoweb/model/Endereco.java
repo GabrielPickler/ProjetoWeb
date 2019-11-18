@@ -1,13 +1,12 @@
 package br.unisul.web.projetoweb.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,12 +14,13 @@ import javax.persistence.Table;
 public class Endereco {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_generator")
+	@SequenceGenerator(name="endereco_generator", sequenceName = "endereco_sequence",allocationSize = 1)
 	@Column(name = "idEndereco")
 	private int idEndereco;
 
-	@Column(name = "numero")
-	private int numero;
+	@Column(name = "numero", length = 100)
+	private String numero;
 	@Column(name = "complemento")
 	private String complemento;
 	@Column(name = "cep", length = 10, nullable = false)
@@ -40,7 +40,7 @@ public class Endereco {
 	public Endereco() {
 	}
 
-	public Endereco(int numero, String complemento, String cep, String rua, String bairro,
+	public Endereco(String numero, String complemento, String cep, String rua, String bairro,
 			String cidade, String estado) {
 		this.numero = numero;
 		this.complemento = complemento;
@@ -51,7 +51,7 @@ public class Endereco {
 		this.estado = estado;
 	}
 
-	public Endereco(int idEndereco, String cep, String rua, String bairro, String cidade, String estado, int numero,
+	public Endereco(int idEndereco, String cep, String rua, String bairro, String cidade, String estado, String numero,
 			String complemento, Usuario usuario) {
 		this.idEndereco = idEndereco;
 		this.cep = cep;
@@ -112,11 +112,11 @@ public class Endereco {
 		return cidade;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 

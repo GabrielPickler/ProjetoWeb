@@ -1,17 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="description" content="">
     <title>Login</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
 
     <!-- Bootstrap core CSS -->
-<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
     <style>
@@ -34,21 +32,16 @@
     <link href="https://getbootstrap.com/docs/4.3/examples/sign-in/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-    <form class="form-signin" action="login.jsp">
-  <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <form class="form-signin">
   <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-  <label for="inputEmail" class="sr-only">Usu√°rio</label>
-  <input type="login" id="login" class="form-control" placeholder="Usu√°rio" required autofocus>
+  <label for="inputEmail" class="sr-only">Usu·rio</label>
+  <input type="text" id="login" name = "login" class="form-control" placeholder="Digite seu usu·rio" required autofocus>
   <label for="inputPassword" class="sr-only">Senha</label>
-  <input type="password" id="senha" class="form-control" placeholder="Senha" required>
-  <div class="checkbox mb-3">
-    <label>
-    </label>
-  
+  <input type="password" id="senha" name = "senha" class="form-control" placeholder="Digite sua senha" required>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-</form>
-<div class="dropdown-divider"></div>
+  <div class="dropdown-divider"></div>
   <a class="dropdown-item" href="cadastro.jsp">Novo aqui? Cadastre-se!</a>
-  </div>
+</form>
+  
 </body>
 </html>
