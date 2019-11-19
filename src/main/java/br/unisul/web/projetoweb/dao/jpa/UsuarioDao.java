@@ -22,7 +22,7 @@ public class UsuarioDao {
 	    }
 
 	    public List<Usuario> findAll() {
-	        return entityManager.createQuery("SELECT u from jpa_usuario u", Usuario.class).getResultList();
+	        return entityManager.createQuery("SELECT u from Usuario u", Usuario.class).getResultList();
 	    }
 
 	    public boolean delete(int idUsuario) {

@@ -43,7 +43,7 @@
   <%   
   if(request.getAttribute("mensagem")!=null){
 %>
-<b><=mensagem></b><%} %>
+<b><%=request.getAttribute("mensagem") %></b><%} %>
 
 	    
 
