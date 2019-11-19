@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,13 +33,20 @@
     <link href="https://getbootstrap.com/docs/4.3/examples/sign-in/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" method="post" action="loginusuario">
   <h1 class="h3 mb-3 font-weight-normal">Login</h1>
   <label for="inputEmail" class="sr-only">Usuário</label>
   <input type="text" id="login" name = "login" class="form-control" placeholder="Digite seu usuário" required autofocus>
   <label for="inputPassword" class="sr-only">Senha</label>
   <input type="password" id="senha" name = "senha" class="form-control" placeholder="Digite sua senha" required>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+  <%   
+  if(request.getAttribute("mensagem")!=null){
+%>
+<b><=mensagem></b><%} %>
+
+	    
+
   <div class="dropdown-divider"></div>
   <a class="dropdown-item" href="cadastro.jsp">Novo aqui? Cadastre-se!</a>
 </form>

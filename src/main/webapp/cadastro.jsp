@@ -150,7 +150,7 @@
 					placeholder="Logradouro">
 			</div>
 			<div class="col-md-3 mb-3">
-				<label for="validationTooltip04">Número</label> <input type="text"
+				<label for="validationTooltip04">Número</label> <input type="number"
 					class="form-control" name="numero" id="numero"
 					placeholder="Número">				
 			</div>
