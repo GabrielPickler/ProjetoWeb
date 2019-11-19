@@ -26,18 +26,48 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 String login=request.getParameter("login");
 String senha=request.getParameter("senha");
 if(verificaExisteUsuario(login)==true) {
-	request.setAttribute("mensagem", "usuário existe");
-    request.getRequestDispatcher("/login.jsp").forward(request, response);
-
+	if(verificaSenha(senha, login)==false) {
+		request.setAttribute("mensagem", "Senha inválida");
+		
 	
-}else {
+	}
+	
+}else {	
 	request.setAttribute("mensagem", "usuário não existe no sistema");
-    request.getRequestDispatcher("/login.jsp").forward(request, response);
-
 	
 }
 	
+
+
+			
+		
 	
+	
+request.getRequestDispatcher("/login.jsp").forward(request, response);
+
+}
+
+private boolean verificaSenha(String senha, String login) {
+	
+List <Usuario> usuarios=usuarioDao.findAll(); 
+	
+	for(Usuario u: usuarios) {
+		if(u.getLogin().equalsIgnoreCase(login)) {
+		
+			if(u.getPassword().equals(senha)) {
+			return true;
+			
+			}
+			
+		}
+		
+	}
+	
+	
+	
+	
+	return false;	
+
 }
 
 private boolean verificaExisteUsuario(String login) {
@@ -45,7 +75,7 @@ private boolean verificaExisteUsuario(String login) {
 	List <Usuario> usuarios=usuarioDao.findAll(); 
 	
 	for(Usuario u: usuarios) {
-		if(u.getLogin().equals(login)) {
+		if(u.getLogin().equalsIgnoreCase(login)) {
 			return true;
 		}
 		

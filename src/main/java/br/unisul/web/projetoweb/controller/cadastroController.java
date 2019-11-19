@@ -1,6 +1,7 @@
 package br.unisul.web.projetoweb.controller;
 
 import java.io.IOException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -17,6 +18,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
 
 import br.unisul.web.projetoweb.dao.jpa.EnderecoDao;
 import br.unisul.web.projetoweb.dao.jpa.UsuarioDao;
@@ -42,6 +45,12 @@ public class cadastroController extends HttpServlet {
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
 			String confirmaSenha = request.getParameter("csenha");
+			if(verificaExisteUsuario(login)==true) {
+request.setAttribute("erro", "Usuário já cadastrado");
+request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+
+			}
+			
 			if (!confirmaSenha.equals(senha)) {
 				RequestDispatcher despachar = request.getRequestDispatcher("cadastro.jsp");
 				despachar.forward(request, response);
@@ -96,6 +105,17 @@ public class cadastroController extends HttpServlet {
 			e.printStackTrace();
 		}
 
+	}
+
+	private boolean verificaExisteUsuario(String login) {
+List <Usuario> usuarios=usuarioDao.findAll();
+for(Usuario u: usuarios) {
+	if(u.getLogin().equalsIgnoreCase(login)){
+		return true;
+	}
+}
+		
+		return false;
 	}
 
 	private void salvaUsuario(Usuario usuario) {

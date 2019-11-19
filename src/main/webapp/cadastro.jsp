@@ -103,6 +103,14 @@
           Por favor, digite seu usuário.
  			</div>
 		</div>
+	 
+	   <%
+  if(request.getAttribute("erro")!=null){
+%>
+<b><%=request.getAttribute("erro") %></b><%} %>
+
+	 
+	
 		<div class="col-md-4 mb-3">
 			<label for="senha">Senha *</label> <input type="password"
 				name="senha" class="form-control" id="senha"
