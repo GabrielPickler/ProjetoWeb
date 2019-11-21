@@ -33,7 +33,7 @@ public class loginusuario extends HttpServlet {
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
 
 			} else {
-				HttpSession session = request.getSession();
+				HttpSession session = request.getSession(true);
 				session.setAttribute("login", login);
 				request.getRequestDispatcher("/menu.jsp").forward(request, response);
 

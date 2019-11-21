@@ -49,7 +49,7 @@ public class cadastroController extends HttpServlet {
 				request.setAttribute("erro", "Usuário já cadastrado");
 				request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
 
-			}
+			} else{
 			
 			if (!confirmaSenha.equals(senha)) {
 				request.setAttribute("erroSenha", "Suas senhas não coincidem. Tente novamente.");
@@ -103,7 +103,7 @@ public class cadastroController extends HttpServlet {
 		salvaUsuario(usuario);
 
 		response.sendRedirect("login.jsp");
-		
+}		
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
