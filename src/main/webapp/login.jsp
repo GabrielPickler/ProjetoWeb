@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,7 +42,7 @@
   if(request.getAttribute("mensagem")!=null){
 %>
 <div class="alert alert-danger" role="alert">
-<b><%=request.getAttribute("mensagem") %></b><%} %>7
+<b><%=request.getAttribute("mensagem") %></b><%} %>
 </div>
 
   <div class="dropdown-divider"></div>

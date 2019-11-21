@@ -87,7 +87,19 @@
                 }
             });
         });
-    </script>
+     
+     </script>  
+     
+     <script>
+     $(document).ready(function(){
+    	 $("#nascimento").blur(function() {
+     		if ("#nascimento" != "") {
+     			$("#idade").val("<%request.getAttribute("idade");%>");
+     		}
+     	});
+     }
+     </script>    
+    
       </head>
       
  <body>
@@ -124,12 +136,6 @@
           Por favor, digite seu usuário.
  			</div>
 		</div>
-	 
-
-
-
-	 
-	
 		<div class="col-md-4 mb-3">
 			<label for="senha">Senha *</label> <input type="password"
 				name="senha" class="form-control" id="senha"
@@ -150,12 +156,19 @@
 				placeholder="Digite seu nome" required = "required">
 			<div class="invalid-tooltip">Por favor, digite seu nome.</div>
 		</div>
-		<div class="col-md-3 mb-3">
+		<div class="form-row">
+		<div class="col-md-2 mb-2">
 			<label for="nascimento">Data de nascimento *</label> <input
 				type="date" class="form-control" name="nascimento"
 				id="nascimento" required = "required">
 			<div class="invalid-tooltip">Por favor, preencha sua data de nascimento.</div>
 		</div>
+		<div class="col-md-1 mb-1">
+		<label for = "idade">Idade</label>
+		<input type="text" name = "idade" class="form-control" id = "idade">
+		</div>
+		</div>
+		<br>
 		<div class="col-md-3 mb-3">
 			<label for="sexo">Sexo *</label> <input type="radio"
 				name="sexo" id="sexo" value = "Masculino"
@@ -166,18 +179,18 @@
 			<div class="invalid-tooltip">Por favor, selecione seu sexo.</div>
 		</div>
 		<div class="col-md-3 mb-3">
-			<label for="validationTooltip05">CEP *</label> <input type="text"
+			<label for="cep">CEP *</label> <input type="text"
 				class="form-control" name="cep" id="cep" placeholder="CEP" required = "required">
 			<div class="invalid-tooltip">Digite seu CEP.</div>
 		</div>
 		<div class="form-row">
 			<div class="col-md-6 mb-3">
-				<label for="validationTooltip03">Logradouro</label> <input
+				<label for="rua">Logradouro</label> <input
 					type="text" class="form-control" name="rua" id="rua"
 					placeholder="Logradouro">
 			</div>
 			<div class="col-md-3 mb-3">
-				<label for="validationTooltip04">Número</label> <input type="number"
+				<label for="numero">Número</label> <input type="number"
 					class="form-control" name="numero" id="numero"
 					placeholder="Número">				
 			</div>
@@ -207,6 +220,7 @@
 			</div>
 		</div>
 		<button class="btn btn-primary" type="submit">Cadastrar</button>
+		<a class="btn btn-primary" href="login.jsp" role="button">Voltar</a>
 	</form>
 	<script>
 (function() {
@@ -223,7 +237,7 @@
       }, false);
     });
   }, false);
-})();
+})());
 </script>
 </body>
 </html>

@@ -77,6 +77,7 @@ public class cadastroController extends HttpServlet {
 		LocalDate start = LocalDate.of(ano, mes, dia);
 		LocalDate end = LocalDate.now();
 		long years = ChronoUnit.YEARS.between(start, end);
+		request.setAttribute("idade", years);
 		if(years < 5 || years > 120) {
 			request.setAttribute("erroIdade", "Sua idade deve ser maior que 5 anos ou menor que 120 anos");
 			request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
