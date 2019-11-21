@@ -13,11 +13,11 @@
 <%
 if(request.getSession().getAttribute("login")==null){
 	%>
-	<b>Tentativa de login inesperada recuzada</b>
+	<b>Tentativa de login inesperada recusada</b>
 <%request.getRequestDispatcher("/login.jsp").forward(request, response); }else{%>
-<h1>Menu dousuário<</h1>
+<h1>Menu do usuário<</h1>
 
-<p>Essa página ainda está em construção</p
+<p>Essa página ainda está em construção</p>
 <form action="saidaController" method="post">
 <input type="submit" value="Sair">
 

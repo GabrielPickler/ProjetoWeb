@@ -46,15 +46,14 @@ public class cadastroController extends HttpServlet {
 			String senha = request.getParameter("senha");
 			String confirmaSenha = request.getParameter("csenha");
 			if(verificaExisteUsuario(login)==true) {
-request.setAttribute("erro", "Usuário já cadastrado");
-request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+				request.setAttribute("erro", "Usuário já cadastrado");
+				request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
 
 			}
 			
 			if (!confirmaSenha.equals(senha)) {
-				RequestDispatcher despachar = request.getRequestDispatcher("cadastro.jsp");
-				despachar.forward(request, response);
-				System.out.println("erro senha");
+				request.setAttribute("erroSenha", "Suas senhas não coincidem. Tente novamente.");
+				request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
 			}
 			String nome = request.getParameter("nome");
 			Date nascimento = sdf.parse(request.getParameter("nascimento"));
@@ -78,6 +77,10 @@ request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
 		LocalDate start = LocalDate.of(ano, mes, dia);
 		LocalDate end = LocalDate.now();
 		long years = ChronoUnit.YEARS.between(start, end);
+		if(years < 5 || years > 120) {
+			request.setAttribute("erroIdade", "Sua idade deve ser maior que 5 anos ou menor que 120 anos");
+			request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+		}
 
 		Endereco endereco = new Endereco();
 		endereco.setCep(cep);

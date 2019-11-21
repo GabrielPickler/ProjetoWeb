@@ -91,6 +91,27 @@
       </head>
       
  <body>
+ 	<%
+	  if(request.getAttribute("erroSenha")!=null){
+	%>
+	<div class="alert alert-danger" role="alert">
+	 <b><%=request.getAttribute("erroSenha") %></b><%} %>
+	</div>
+ 
+ 	 <%
+	  if(request.getAttribute("erroIdade")!=null){
+	%>
+	<div class="alert alert-danger" role="alert">
+	 <b><%=request.getAttribute("erroIdade") %></b><%} %>
+	</div>
+	
+	 <%
+	  if(request.getAttribute("erro")!=null){
+	%>
+	<div class="alert alert-danger" role="alert">
+	 <b><%=request.getAttribute("erro") %></b><%} %>
+	</div>
+	
 	<b><font size="10">Cadastro de Usuário</font></b>
 	<br>
 	<br>
@@ -104,10 +125,8 @@
  			</div>
 		</div>
 	 
-	   <%
-  if(request.getAttribute("erro")!=null){
-%>
-<b><%=request.getAttribute("erro") %></b><%} %>
+
+
 
 	 
 	

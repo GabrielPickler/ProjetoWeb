@@ -43,9 +43,9 @@
   <%   
   if(request.getAttribute("mensagem")!=null){
 %>
-<b><%=request.getAttribute("mensagem") %></b><%} %>
-
-	    
+<div class="alert alert-danger" role="alert">
+<b><%=request.getAttribute("mensagem") %></b><%} %>7
+</div>
 
   <div class="dropdown-divider"></div>
   <a class="dropdown-item" href="cadastro.jsp">Novo aqui? Cadastre-se!</a>
