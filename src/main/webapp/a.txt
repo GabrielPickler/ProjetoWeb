@@ -1,3 +1,0 @@
-agora ao logar, o sistema verifica se o usuário existe ou não. se não existir, informa a o usuário sobre a condição. caso o usuário existir, ele verifica a senha. se a senha estiver inorreta, uma
-mensagem é exibida ao usuário.
-No cadastro de usuários, ao clicar em cadastrar, o sistema verifica se já existe um login igual no banco de dados. se já existir, não permite o cadastro e informa a situação ao usuário.
