@@ -14,16 +14,19 @@ public class UsuarioDao {
 	
 	 private EntityManager entityManager = JPAUtil.getEntityManager();
 	    public boolean save(Usuario usuario) {
-
 	        entityManager.getTransaction().begin();
 	        entityManager.persist(usuario);
 	        entityManager.getTransaction().commit();
 	        return false;
 	    }
 
-	    public List<Usuario> findAll() {
-	        return entityManager.createQuery("SELECT u from Usuario u", Usuario.class).getResultList();
-	    }
+public List<Usuario> findId(String loginUser) {
+return entityManager.createQuery("SELECT p.id FROM Usuario p WHERE p.login="+loginUser, Usuario.class).getResultList();
+}
+
+public List<Usuario> findAll() {
+return entityManager.createQuery("SELECT u from Usuario u", Usuario.class).getResultList();
+}
 
 	    public boolean delete(int idUsuario) {
 	        entityManager.getTransaction().begin();
