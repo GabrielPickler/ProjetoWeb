@@ -1,5 +1,4 @@
   <%@ page import = "javax.servlet.http.HttpSession" %>
-<%@page import= "br.unisul.web.projetoweb.dao.jpa.UsuarioDao"%>
 
 <!DOCTYPE html>
 <html>
@@ -14,16 +13,6 @@
                 </style>
 </head>
 <body>
-        <%
-        if(request.getSession().getAttribute("login")==null){
-                %>
-        <b>Tentativa de login inesperada recusada</b>
-        <%request.getRequestDispatcher("/login.jsp").forward(request, response); }
-        else{%>
-<%UsuarioDao usuarioDao=new UsuarioDao();
-int id=(int)request.getAttribute("id");
-%>
-<%=id%>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -42,9 +31,18 @@ int id=(int)request.getAttribute("id");
     </ul>
   </div>
 </nav>
-        <h1>Menu do usuário</h1>
-        <p>página em construção</p>
+	<%
+	if(request.getSession().getAttribute("login")==null){
+	        %>
+        <b>Tentativa de login inesperada recusada</b>
+	<%request.getRequestDispatcher("/login.jsp").forward(request, response); }
+	else{%>
+	<h1>Menu do usuário</h1>
+	<p>página em construção</p>
+	<%int id=(int)request.getAttribute("id");%>
+	<%=id%>
 <a href="http://localhost:8081/projetoweb/saidaController">Sair</a>
 <%}%>
 </body>
 </html>
+
