@@ -20,8 +20,8 @@ public class UsuarioDao {
 	        return false;
 	    }
 
-public List<Usuario> findId(String loginUser) {
-return entityManager.createQuery("SELECT p.id FROM Usuario p WHERE p.login="+loginUser, Usuario.class).getResultList();
+public List<int> findId(String loginUser) {
+return entityManager.createQuery("SELECT (p.id) FROM Usuario p WHERE (p.login='"+loginUser+"')", Usuario.class).getResultList();
 }
 
 public List<Usuario> findAll() {

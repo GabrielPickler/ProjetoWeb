@@ -36,8 +36,10 @@ public class loginusuario extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("login", login);
 
-List <Usuario> ids=usuarioDao.findId(login);
-int id=ids.get(0).getIdUsuario();
+				
+List <int> ids=usuarioDao.findId(login);;
+
+int id=ids.get(0);
 request.setAttribute("id", id);
 request.getRequestDispatcher("/menu.jsp").forward(request, response);
 
