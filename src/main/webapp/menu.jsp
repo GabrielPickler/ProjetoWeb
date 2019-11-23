@@ -25,23 +25,24 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="http://localhost:8080/projetoweb/saidaController">Sair</a>
+        <a class="nav-link" href="http://localhost:8081/projetoweb/saidaController">Sair</a>
       </li>
 
     </ul>
   </div>
 </nav>
-<%
-if(request.getSession().getAttribute("login")==null){
-        %>
+	<%
+	if(request.getSession().getAttribute("login")==null){
+	        %>
         <b>Tentativa de login inesperada recusada</b>
-<%request.getRequestDispatcher("/login.jsp").forward(request, response); }else{%>
-<h1>Menu do usuário</h1>
-<p>página em construção</p>
-<%int id=request.getAttribute("id");%>
-<%=id%>
-<a href="http://localhost:8080/projetoweb/saidaController">Sair</a>
-
+	<%request.getRequestDispatcher("/login.jsp").forward(request, response); }
+	else{%>
+	<h1>Menu do usuário</h1>
+	<p>página em construção</p>
+	<%int id=(int)request.getAttribute("id");%>
+	<%=id%>
+<a href="http://localhost:8081/projetoweb/saidaController">Sair</a>
+<%}%>
 </body>
 </html>
-<%}%>
+

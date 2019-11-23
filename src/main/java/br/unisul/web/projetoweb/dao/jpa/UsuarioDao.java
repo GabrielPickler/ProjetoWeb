@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import br.unisul.web.projetoweb.dao.JPAUtil;
 import br.unisul.web.projetoweb.model.Endereco;
@@ -20,13 +21,13 @@ public class UsuarioDao {
 	        return false;
 	    }
 
-public List<int> findId(String loginUser) {
-return entityManager.createQuery("SELECT (p.id) FROM Usuario p WHERE (p.login='"+loginUser+"')", Usuario.class).getResultList();
-}
-
-public List<Usuario> findAll() {
-return entityManager.createQuery("SELECT u from Usuario u", Usuario.class).getResultList();
-}
+	 public TypedQuery<Integer> findId(String loginUser) {
+	 return entityManager.createQuery("SELECT p.idUsuario FROM Usuario p WHERE p.login='"+loginUser+"'", Integer.class);
+	 }
+	
+	 public List<Usuario> findAll() {
+	 return entityManager.createQuery("SELECT u from Usuario u", Usuario.class).getResultList();
+	 }
 
 	    public boolean delete(int idUsuario) {
 	        entityManager.getTransaction().begin();

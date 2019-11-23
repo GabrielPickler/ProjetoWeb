@@ -3,6 +3,8 @@ package br.unisul.web.projetoweb.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.Parameter;
+import javax.persistence.TypedQuery;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,12 +38,10 @@ public class loginusuario extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("login", login);
 
-				
-List <int> ids=usuarioDao.findId(login);;
-
-int id=ids.get(0);
-request.setAttribute("id", id);
-request.getRequestDispatcher("/menu.jsp").forward(request, response);
+		TypedQuery<Integer> ids= usuarioDao.findId(login);
+		int id = ids.getSingleResult();
+		request.setAttribute("id", id);
+		request.getRequestDispatcher("/menu.jsp").forward(request, response);
 
 			}
 
