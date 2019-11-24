@@ -46,10 +46,9 @@ public class UsuarioDao {
         return entityManager.getReference(Usuario.class, idUsuario);
     }
 
-
-
-            public Endereco findById(int idUsuario) {
-                return entityManager.getReference(Endereco.class,idUsuario);
-            }
+    
+    public Endereco findByIdEndereco(int idUsuario) {
+         return entityManager.getReference(Endereco.class,idUsuario);
+    }
 
 }

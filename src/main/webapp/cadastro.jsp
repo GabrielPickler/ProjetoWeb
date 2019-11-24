@@ -29,10 +29,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Adicionando JQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- Adicionando Javascript -->
     <script type="text/javascript" >
         $(document).ready(function() {
@@ -88,18 +85,7 @@
             });
         });
      
-     </script>  
-     
-     <script>
-     $(document).ready(function(){
-    	 $("#nascimento").blur(function() {
-     		if ("#nascimento" != "") {
-     			$("#idade").val("<%request.getAttribute("idade");%>");
-     		}
-     	});
-     }
-     </script>    
-    
+     </script>         
       </head>
       
  <body>
@@ -109,14 +95,14 @@
 	<div class="alert alert-danger" role="alert">
 	 <b><%=request.getAttribute("erroSenha") %></b><%} %>
 	</div>
- 
- 	 <%
+	
+	<%
 	  if(request.getAttribute("erroIdade")!=null){
 	%>
 	<div class="alert alert-danger" role="alert">
 	 <b><%=request.getAttribute("erroIdade") %></b><%} %>
 	</div>
-	
+
 	 <%
 	  if(request.getAttribute("erro")!=null){
 	%>
@@ -124,8 +110,8 @@
 	 <b><%=request.getAttribute("erro") %></b><%} %>
 	</div>
 	
-	<b><font size="10">Cadastro de Usuário</font></b>
-	<br>
+	<b><font size="10"><label>Cadastro de Usuário</label></font></b>
+	<hr color="black">
 	<br>
 	<form class="needs-validation" novalidate action="cadastroController">
 		<div class="col-md-4 mb-3">
@@ -165,16 +151,18 @@
 		</div>
 		<div class="col-md-1 mb-1">
 		<label for = "idade">Idade</label>
-		<input type="text" name = "idade" class="form-control" id = "idade">
+		<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Sua idade deve ser maior que 5 anos e menor que 120 anos">
+		<input type="number" name = "idade" class="form-control" id = "idade" min ="5" max ="120" disabled>
+		</span>
 		</div>
 		</div>
 		<br>
 		<div class="col-md-3 mb-3">
 			<label for="sexo">Sexo *</label> <input type="radio"
-				name="sexo" id="sexo" value = "Masculino"
+				name="sexo" id="sexo1" value = "Masculino"
 				placeholder="Digite seu nome" required = "required"><label> Masculino</label>
 				<input type="radio"
-				name="sexo" id="sexo" value = "Feminino"
+				name="sexo" id="sexo2" value = "Feminino"
 				placeholder="Digite seu nome" required = "required"><label> Feminino</label>
 			<div class="invalid-tooltip">Por favor, selecione seu sexo.</div>
 		</div>
@@ -220,7 +208,9 @@
 			</div>
 		</div>
 		<button class="btn btn-primary" type="submit">Cadastrar</button>
+		<a class="btn btn-primary" id="limpar" href= "#" role="button">Limpar</a>
 		<a class="btn btn-primary" href="login.jsp" role="button">Voltar</a>
+		
 	</form>
 	<script>
 (function() {
@@ -237,8 +227,10 @@
       }, false);
     });
   }, false);
-})());
+})();
 </script>
+<script type = "text/javascript" src = "cadastrarUsuario.js"></script>
+<script type = "text/javascript" src = "limpaCadastro.js"></script>
 </body>
 </html>
 

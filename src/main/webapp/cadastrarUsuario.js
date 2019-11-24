@@ -1,9 +1,10 @@
-    document.getElementById("nascimento").addEventListener('change', function() {
-    var data = new Date(this.value);
-    if(isDate_(this.value) && data.getFullYear() > 1900)
-        document.getElementById("idade").value = calculateAge(this.value);
-  });
-
+	document.getElementById("nascimento").addEventListener('change', function() {
+    var nascimento = new Date(this.value);
+    if(isDate_(this.value)){
+        document.getElementById("idade").value = calculateAge(this.value); 
+    }
+    });
+    
   function calculateAge(dobString) {
     var dob = new Date(dobString);
     var currentDate = new Date();
@@ -12,14 +13,14 @@
     var age = currentYear - dob.getFullYear();
     if(birthdayThisYear > currentDate) {
       age--;
-    }
+    }  
     return age;
-  }
+    }
 
-  function calcular(data) {
-    var data = document.form.nascimento.value;
-    alert(data);
-    var partes = data.split("/");
+  function calcular(nascimento) {
+    var nascimento = document.form.nascimento.value;
+    alert(nascimento);
+    var partes = nascimento.split("/");
     var junta = partes[2]+"-"+partes[1]+"-"+partes[0];
     document.form.idade.value = (calculateAge(junta));
   }
@@ -38,3 +39,5 @@
           }
           return status;
   }
+  
+  

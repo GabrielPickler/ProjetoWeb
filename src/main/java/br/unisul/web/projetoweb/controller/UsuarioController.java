@@ -14,24 +14,23 @@ import br.unisul.web.projetoweb.model.Usuario;
 
 @WebServlet("/UsuarioController")
 public class UsuarioController extends HttpServlet {
-        private UsuarioDao usuarioDao = new UsuarioDao();
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-DoPost(request, response);
+	private UsuarioDao usuarioDao = new UsuarioDao();
 
-        }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
 
-        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
 
-                        int id=(Integer.parseInt(request.getParameter("id")));
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-Usuario usuario=usuarioDao.findById(id);
-request.setAttribute("usuario", usuario);
+		int id = (Integer.parseInt(request.getParameter("id")));
+		Usuario usuario = usuarioDao.findById(id);
+		request.setAttribute("usuario", usuario);
+		request.setAttribute("contador", 1);
+		request.getRequestDispatcher("/menu.jsp").forward(request, response);
 
-
-
-request.getRequestDispatcher("/login.jsp").forward(request, response);
-
-                                
-                }
+	}
 
 }
