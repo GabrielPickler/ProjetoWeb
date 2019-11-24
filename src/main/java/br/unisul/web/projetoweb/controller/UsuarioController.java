@@ -26,10 +26,19 @@ public class UsuarioController extends HttpServlet {
 			throws ServletException, IOException {
 
 		int id = (Integer.parseInt(request.getParameter("id")));
+String acao=request.getParameter("acao");
+if((request.getParameter("acao").equalsIgnoreCase("pegaidusuario"))){
 		Usuario usuario = usuarioDao.findById(id);
 		request.setAttribute("usuario", usuario);
 		request.setAttribute("contador", 1);
 		request.getRequestDispatcher("/menu.jsp").forward(request, response);
+} else if((request.getParameter("acao").equalsIgnoreCase("listar"))){
+System.out.println("listar");
+} else {
+System.out.println("nada");
+
+}
+
 
 	}
 
