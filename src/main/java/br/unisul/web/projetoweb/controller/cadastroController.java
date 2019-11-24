@@ -81,7 +81,7 @@ public class cadastroController extends HttpServlet {
 		if(years < 5 || years > 120) {
 			request.setAttribute("erroIdade", "Sua idade deve ser maior que 5 anos ou menor que 120 anos");
 			request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
-		}
+		}else {
 
 		Endereco endereco = new Endereco();
 		endereco.setCep(cep);
@@ -104,7 +104,8 @@ public class cadastroController extends HttpServlet {
 		salvaUsuario(usuario);
 
 		response.sendRedirect("login.jsp");
-}		
+}
+}
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
