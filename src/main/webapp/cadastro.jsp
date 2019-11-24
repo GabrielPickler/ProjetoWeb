@@ -118,30 +118,31 @@
 			<label for="usuario">Usuário *</label> <input type="text"
 				class="form-control" id="usuario"
 				placeholder="Digite seu usuário" value="" required="required" name = "login">
-			<div class="invalid-tooltip">
-          Por favor, digite seu usuário.
+			<div class="invalid-feedback">
+          Campo obrigatório.
  			</div>
 		</div>
 		<div class="col-md-4 mb-3">
 			<label for="senha">Senha *</label> <input type="password"
 				name="senha" class="form-control" id="senha"
 				placeholder="Digite sua senha" value="" required="required">
-			<div class="invalid-tooltip">Por favor, digite sua senha.</div>
+			<div class="invalid-feedback">Campo obrigatório.</div>
 		</div>
 		<div class="col-md-4 mb-3">
 			<label for="csenha">Confirmar a senha *</label> <input
 				type="password" name="csenha" class="form-control"
 				id="csenha" placeholder="Confirme sua senha" value=""
 				required="required">
-			<div class="invalid-tooltip">Confirme sua senha *</div>
+			<div class="invalid-feedback">Campo obrigatório</div>
 		</div>
 		<label><b>Dados Pessoais</b></label>
 		<div class="col-md-3 mb-3">
 			<label for="nome">Nome *</label> <input type="text"
 				class="form-control" name="nome" id="nome"
 				placeholder="Digite seu nome" required = "required">
-			<div class="invalid-tooltip">Por favor, digite seu nome.</div>
+			<div class="invalid-feedback">Campo obrigatório.</div>
 		</div>
+		
 		<div class="form-row">
 		<div class="col-md-2 mb-2">
 			<label for="nascimento">Data de nascimento *</label> <input
@@ -164,12 +165,12 @@
 				<input type="radio"
 				name="sexo" id="sexo2" value = "Feminino"
 				placeholder="Digite seu nome" required = "required"><label> Feminino</label>
-			<div class="invalid-tooltip">Por favor, selecione seu sexo.</div>
+			<div class="invalid-feedback">Campo obrigatório.</div>
 		</div>
 		<div class="col-md-3 mb-3">
 			<label for="cep">CEP *</label> <input type="text"
 				class="form-control" name="cep" id="cep" placeholder="CEP" required = "required">
-			<div class="invalid-tooltip">Digite seu CEP.</div>
+			<div class="invalid-feedback">Campo obrigatório.</div>
 		</div>
 		<div class="form-row">
 			<div class="col-md-6 mb-3">

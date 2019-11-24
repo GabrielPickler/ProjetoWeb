@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/saidaController")
 public class saidaController extends HttpServlet {
-	   
-    
-	 
+	
+
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	

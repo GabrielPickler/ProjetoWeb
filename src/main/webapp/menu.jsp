@@ -1,8 +1,7 @@
-
 <%@ page import="javax.servlet.http.HttpSession"%>
 <%@page import="br.unisul.web.projetoweb.dao.jpa.UsuarioDao"%>
 <%@ page import="br.unisul.web.projetoweb.model.Usuario"%>
-
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,34 +26,22 @@ body {
                 } else {
         %>
         <%
-                int id = 0;
-                        if ((Usuario) request.getAttribute("usuario") == null) {
-                                id = (int) request.getAttribute("id");
-                                request.getRequestDispatcher("UsuarioController?id=" + id+"&acao=pegaidusuario").forward(request, response);
-                        }
+int id = (int)request.getSession().getAttribute("id");
         %>
         <%
-                Usuario usuario = (Usuario) request.getAttribute("usuario");
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         %>
-        <%=usuario.getNome()%>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active"><a class="nav-link" href="menu.jsp">Produtos<span
-                                                class="sr-only">(current)</span></a></li>
-
-                                <li class="nav-item active"><a class="nav-link" href="#">Relatórios</a>
-                                </li>
-
-                                <li class="nav-item active"><a class="nav-link"
-                                        href="http://localhost:8081/projetoweb/saidaController">Sair</a></li>
-
-                        </ul>
-                </div>
-        </nav>
-        <h1>Menu do usuário</h1>
+               <nav class="navbar navbar-dark bg-primary">
+		<form class="form-inline">
+			<a class="btn btn-primary" role="button" href="menu.jsp"><label>Início</label></a>
+			<a class="btn btn-primary" role="button" href ="http://localhost:8081/projetoweb/produtos.jsp?id=<%=usuario.getIdUsuario()%>"><label>Produtos</label></a>
+			<a class="btn btn-primary" role="button" href ="#"><label>Relatório</label></a>
+			<a class="btn btn-primary" role="button" href ="saidaController"><label>Sair</label></a>
+		</form>
+	</nav>
+        <h1>Bem vindo, <%=usuario.getNome()%></h1>
         <p>página em construção</p>
-<%String url="http://localhost:8080/projetoweb/produtos.jsp?id="+usuario.getIdUsuario();%>
+<%String url="http://localhost:8081/projetoweb/produtos.jsp?id="+usuario.getIdUsuario();%>
 <a href="<%=url%>">Produtos</a>
         <a href="http://localhost:8081/projetoweb/saidaController">Sair</a>
         <%

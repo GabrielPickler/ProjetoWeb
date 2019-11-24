@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import br.unisul.web.projetoweb.dao.jpa.UsuarioDao;
 import br.unisul.web.projetoweb.model.Usuario;
 
@@ -40,7 +39,10 @@ public class loginusuario extends HttpServlet {
 
                 TypedQuery<Integer> ids= usuarioDao.findId(login);
                 int id = ids.getSingleResult();
-                request.setAttribute("id", id);
+                Usuario usuario = usuarioDao.findById(id);
+
+session.setAttribute("id", id);
+session.setAttribute("usuario", usuario);
                 request.getRequestDispatcher("/menu.jsp?id="+id).forward(request, response);
 
                         }
