@@ -14,4 +14,6 @@ document.getElementById("limpar").addEventListener('click', function() {
 	document.getElementById("cidade").value = ""
 	document.getElementById("bairro").value = ""
 	document.getElementById("numero").value = ""
+	$("#respostaIdade").hide()
+	$("#respostaCep").hide()
 });

@@ -57,11 +57,11 @@ body {
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Produto</th>
-				<th scope="col">Imagem</th>
-				<th scope="col">Medida</th>
-				<th scope="col">Quantidade</th>
+				<th scope="col"><label>#</label></th>
+				<th scope="col"><label>Produto></label></th>
+				<th scope="col"><label>Imagem</label></th>
+				<th scope="col"><label>Medida</label></th>
+				<th scope="col"><label>Quantidade</label></th>
 				<th></th>
 			</tr>
 		</thead>
@@ -72,7 +72,7 @@ body {
 		<tr>
 			<th scope="row"><%=produto.getIdProduto()%></th>
 			<td><%=produto.getNome()%></td>
-			<td><a class="image-link" href="<%=produto.getImagem()%>">Abrir imagem</a></td>
+			<td><a class="image-link" href="<%=produto.getImagem()%>"><label>Abrir imagem</label></a></td>
 			<td><%=produto.getMedida()%></td>
 			<td><%=produto.getQuantidade()%></td>
 			<td><a class="btn btn-primary btn-sm" role="button" href="#"><label>Comprar</label></a></td>

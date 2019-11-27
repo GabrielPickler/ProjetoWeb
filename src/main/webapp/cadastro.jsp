@@ -27,65 +27,10 @@
 	      }  
       </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <!-- Adicionando JQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- Adicionando Javascript -->
-    <script type="text/javascript" >
-        $(document).ready(function() {
-            function limpa_formulário_cep() {
-                // Limpa valores do formulário de cep.
-                $("#rua").val("");
-                $("#bairro").val("");
-                $("#cidade").val("");
-	                $("#uf").val("");
-            }
-            
-            //Quando o campo cep perde o foco.
-            $("#cep").blur(function() {
-                //Nova variável "cep" somente com dígitos.
-                var cep = $(this).val().replace(/\D/g, '');
-                //Verifica se campo cep possui valor informado.
-                if (cep != "") {
-                    //Expressão regular para validar o CEP.
-                    var validacep = /^[0-9]{8}$/;
-                    //Valida o formato do CEP.
-                    if(validacep.test(cep)) {
-                        //Preenche os campos com "..." enquanto consulta webservice.
-                        $("#rua").val("...");
-                        $("#bairro").val("...");
-                        $("#cidade").val("...");
-                        $("#uf").val("...");
-                        //Consulta o webservice viacep.com.br/
-                        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-                            if (!("erro" in dados)) {
-                                //Atualiza os campos com os valores da consulta.
-                                $("#rua").val(dados.logradouro);
-                                $("#bairro").val(dados.bairro);
-                                $("#cidade").val(dados.localidade);
-                                $("#uf").val(dados.uf);                
-                            } //end if.
-                            else {
-                                //CEP pesquisado não foi encontrado.
-                                limpa_formulário_cep();
-                                alert("CEP não encontrado.");
-                            }
-                        });
-                    } //end if.
-                    else {
-                        //cep é inválido.
-                        limpa_formulário_cep();
-                        alert("Formato de CEP inválido.");
-                    }
-                } //end if.
-                else {
-                    //cep sem valor, limpa formulário.
-                    limpa_formulário_cep();
-                }
-            });
-        });
-     
-     </script>         
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>   
+    <script type = "text/javascript" src = "procuraCep.js"></script> 
+           
       </head>
       
  <body>
@@ -106,7 +51,7 @@
 	 <%
 	  if(request.getAttribute("erro")!=null){
 	%>
-	<div class="alert alert-danger" role="alert">
+	<div class="" role="alert">
 	 <b><%=request.getAttribute("erro") %></b><%} %>
 	</div>
 	
@@ -140,7 +85,7 @@
 			<label for="nome">Nome *</label> <input type="text"
 				class="form-control" name="nome" id="nome"
 				placeholder="Digite seu nome" required = "required">
-			<div class="invalid-feedback">Campo obrigatório.</div>
+			<div class="invalid-feedback"></div>
 		</div>
 		
 		<div class="form-row">
@@ -148,13 +93,14 @@
 			<label for="nascimento">Data de nascimento *</label> <input
 				type="date" class="form-control" name="nascimento"
 				id="nascimento" required = "required">
-			<div class="invalid-tooltip">Por favor, preencha sua data de nascimento.</div>
+			<div class="invalid-feedback">Campo obrigatório.</div>
 		</div>
 		<div class="col-md-1 mb-1">
 		<label for = "idade">Idade</label>
-		<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Sua idade deve ser maior que 5 anos e menor que 120 anos">
-		<input type="number" name = "idade" class="form-control" id = "idade" min ="5" max ="120" disabled>
-		</span>
+		<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Sua idade deve ser maior que 5 anos e menor que 120 anos"></span>
+		<input type="number" name = "idade" class="form-control" id = "idade" min ="5" max ="120" disabled>		
+		<div id = "respostaIdade" class="invalid-feedback">
+		</div>
 		</div>
 		</div>
 		<br>
@@ -171,6 +117,8 @@
 			<label for="cep">CEP *</label> <input type="text"
 				class="form-control" name="cep" id="cep" placeholder="CEP" required = "required">
 			<div class="invalid-feedback">Campo obrigatório.</div>
+			<div id = "respostaCep" class="invalid-feedback">
+		</div>
 		</div>
 		<div class="form-row">
 			<div class="col-md-6 mb-3">
@@ -208,27 +156,27 @@
 					placeholder="Digite seu bairro">
 			</div>
 		</div>
-		<button class="btn btn-primary" type="submit">Cadastrar</button>
+		<button id ="cadastrar" class="btn btn-primary" type="submit">Cadastrar</button>
 		<a class="btn btn-primary" id="limpar" href= "#" role="button">Limpar</a>
 		<a class="btn btn-primary" href="login.jsp" role="button">Voltar</a>
 		
 	</form>
 	<script>
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    var forms = document.getElementsByClassName('needs-validation');
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+		(function() {
+		  'use strict';
+		  window.addEventListener('load', function() {
+		    var forms = document.getElementsByClassName('needs-validation');
+		    var validation = Array.prototype.filter.call(forms, function(form) {
+		      form.addEventListener('submit', function(event) {
+		        if (form.checkValidity() === false) {
+		          event.preventDefault();
+		          event.stopPropagation();
+		        }
+		        form.classList.add('was-validated');
+		      }, false);
+		    });
+		  }, false);
+		})();
 </script>
 <script type = "text/javascript" src = "cadastrarUsuario.js"></script>
 <script type = "text/javascript" src = "limpaCadastro.js"></script>
