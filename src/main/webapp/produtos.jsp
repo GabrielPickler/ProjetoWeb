@@ -78,10 +78,11 @@ body {
 		<tr>
 			<th scope="row"><%=produto.getIdProduto()%></th>
 			<td><%=produto.getNome()%></td>
-			<td><a class="image-link" href="https://scontent.fbfh1-2.fna.fbcdn.net/v/t1.6435-9/32953086_1693281210707967_551886431199428608_n.jpg?_nc_cat=104&_nc_ohc=VOEMcXmpWQ4AQmMDHSwp2zxs1VPeoYWampapU1XO09ZQCrIfp4F5j8Htw&_nc_ht=scontent.fbfh1-2.fna&oh=4222e9cae46f9d19d429bda03d8d5039&oe=5E7E1D33"><label>Abrir imagem</label></a></td>
+			<td><a class="image-link" href="https://scontent.fbfh1-2.fna.fbcdn.net/v/t1.6435-9/32953086_1693281210707967_551886431199428608_n.jpg?_nc_cat=104&_nc_ohc=VOEMcXmpWQ4AQmMDHSwp2zxs1VPeoYWampapU1XO09ZQCrIfp4F5j8Htw&_nc_ht=scontent.fbfh1-2.fna&oh=4222
+e9cae46f9d19d429bda03d8d5039&oe=5E7E1D33"><label>Abrir imagem</label></a></td>
 			<td><%=produto.getMedida()%></td>
 			<td><%=produto.getQuantidade()%></td>
-			<td><a id="produto<%=produto.getIdProduto()%>" class="btn btn-primary btn-sm" role="button" href="/solicitarController" data-toggle="modal" data-target="#comprar"><label>Comprar</label></a></td>		
+			<td><a id="produto<%=produto.getIdProduto()%>" class="btn btn-primary btn-sm" role="button" href="/solicitarController?id=<%=produto.getIdProduto()%>" data-toggle="modal" data-target="#comprar"><label>Comprar</label></a></td>		
 		</tr>
 		<%
 			}
