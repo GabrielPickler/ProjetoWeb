@@ -23,8 +23,8 @@ public class solicitarController extends HttpServlet {
 
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
                 int id = Integer.parseInt(request.getParameter("id"));
-                Produto produto = produtoDao.findById(id);                
-                request.setAttribute("nomeproduto", produto.getNome());
+                Produto produto = produtoDao.findById(id);
+                request.setAttribute("produto", produto);
                 request.getRequestDispatcher("/compras.jsp?id=" + id).forward(request, response);
         }
 
