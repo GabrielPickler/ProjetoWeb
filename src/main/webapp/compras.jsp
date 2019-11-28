@@ -37,14 +37,34 @@ data-backdrop="static">
                         </a>
                       </div>
                       <div class="modal-body">
-                        teste
+                      <b>Preço: </b>R$<%=produto.getPreco() %><br>
+                      <b>Medida: </b><%=produto.getMedida()%><br>
+                      <b>Disponível: </b><span id ="disponivel"><%=produto.getQuantidade() %></span><br><br>
+                      <div class="col-md-2 mb-2">
+                      <label>Quantidade:</label>                      
+                      <input type = "number" min = 1 id = "quantidade" name = "quantidade">
+                      </div>
                       </div>
                       <div class="modal-footer">
-                        <a role="button" class="btn btn-secondary" href = "produtos.jsp">Voltar</a>
-                        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                        <button id = "salvar" type="button" class="btn btn-primary">Solicitar</button>
+                        <a role="button" class="btn btn-secondary" href = "produtos.jsp">Voltar</a>                        
                       </div>
                     </div>
                   </div>
                 </div>
+                
+                <script type="text/javascript">
+                var disponivel = document.getElementById('disponivel').innerText;
+                document.getElementById("quantidade").addEventListener('focusout', function() {
+                	if(document.getElementById("quantidade").value > disponivel){
+                		document.getElementById("salvar").disabled = true;
+                	}else{
+                		document.getElementById("salvar").disabled = false;
+                	}
+                	 if(document.getElementById("quantidade").value < 0){
+                		document.getElementById("salvar").disabled = true;
+                	}
+                });
+                </script>
 </body>
 </html>
