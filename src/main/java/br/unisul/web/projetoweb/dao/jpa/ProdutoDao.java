@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import br.unisul.web.projetoweb.dao.JPAUtil;
 import br.unisul.web.projetoweb.model.Produto;
+import br.unisul.web.projetoweb.model.Usuario;
 
 public class ProdutoDao {
 
@@ -34,5 +35,9 @@ public class ProdutoDao {
 		entityManager.merge(produto);
 		entityManager.getTransaction().commit();
 	}
+	
+	public Produto findById(int idProduto){
+        return entityManager.getReference(Produto.class, idUsuario);
+    }
 
 }
