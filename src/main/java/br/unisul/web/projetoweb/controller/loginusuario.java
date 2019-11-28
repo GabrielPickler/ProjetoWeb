@@ -16,78 +16,78 @@ import br.unisul.web.projetoweb.model.Usuario;
 
 @WebServlet("/loginusuario")
 public class loginusuario extends HttpServlet {
-        private UsuarioDao usuarioDao = new UsuarioDao();
+	private UsuarioDao usuarioDao = new UsuarioDao();
 
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                        throws ServletException, IOException {
-                doPost(request, response);
-        }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
 
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
-                        throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-                String login = request.getParameter("login");
-                String senha = request.getParameter("senha");
-                if (verificaExisteUsuario(login) == true) {
-                        if (verificaSenha(senha, login) == false) {
-                                request.setAttribute("mensagem", "Senha inválida");
-                                request.getRequestDispatcher("/login.jsp").forward(request, response);
+		String login = request.getParameter("login");
+		String senha = request.getParameter("senha");
+		if (verificaExisteUsuario(login) == true) {
+			if (verificaSenha(senha, login) == false) {
+				request.setAttribute("mensagem", "Senha inválida");
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
 
-                        } else {
-                                HttpSession session = request.getSession(true);
-                                session.setAttribute("login", login);
+			} else {
+				HttpSession session = request.getSession(true);
+				session.setAttribute("login", login);
 
-                TypedQuery<Integer> ids= usuarioDao.findId(login);
-                int id = ids.getSingleResult();
-                Usuario usuario = usuarioDao.findById(id);
+				TypedQuery<Integer> ids = usuarioDao.findId(login);
+				int id = ids.getSingleResult();
+				Usuario usuario = usuarioDao.findById(id);
 
-session.setAttribute("id", id);
-session.setAttribute("usuario", usuario);
-                request.getRequestDispatcher("/menu.jsp?id="+id).forward(request, response);
+				session.setAttribute("id", id);
+				session.setAttribute("usuario", usuario);
+				request.getRequestDispatcher("/menu.jsp?id=" + id).forward(request, response);
 
-                        }
+			}
 
-                } else {
-                        request.setAttribute("mensagem", "usuário não existe no sistema");
-                        request.getRequestDispatcher("/login.jsp").forward(request, response);
+		} else {
+			request.setAttribute("mensagem", "usuário não existe no sistema");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 
-                }
+		}
 
-        }
+	}
 
-        private boolean verificaSenha(String senha, String login) {
+	private boolean verificaSenha(String senha, String login) {
 
-                List<Usuario> usuarios = usuarioDao.findAll();
+		List<Usuario> usuarios = usuarioDao.findAll();
 
-                for (Usuario u : usuarios) {
-                        if (u.getLogin().equalsIgnoreCase(login)) {
+		for (Usuario u : usuarios) {
+			if (u.getLogin().equalsIgnoreCase(login)) {
 
-                                if (u.getPassword().equals(senha)) {
-                                        return true;
+				if (u.getPassword().equals(senha)) {
+					return true;
 
-                                }
+				}
 
-                        }
+			}
 
-                }
+		}
 
-                return false;
+		return false;
 
-        }
+	}
 
-        private boolean verificaExisteUsuario(String login) {
+	private boolean verificaExisteUsuario(String login) {
 
-                List<Usuario> usuarios = usuarioDao.findAll();
+		List<Usuario> usuarios = usuarioDao.findAll();
 
-                for (Usuario u : usuarios) {
-                        if (u.getLogin().equalsIgnoreCase(login)) {
-                                return true;
-                        }
+		for (Usuario u : usuarios) {
+			if (u.getLogin().equalsIgnoreCase(login)) {
+				return true;
+			}
 
-                }
+		}
 
-                return false;
+		return false;
 
-        }
+	}
 
 }

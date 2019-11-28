@@ -37,7 +37,7 @@ public class ProdutoDao {
 	}
 	
 	public Produto findById(int idProduto){
-        return entityManager.getReference(Produto.class, idUsuario);
+        return entityManager.getReference(Produto.class, idProduto);
     }
 
 }
