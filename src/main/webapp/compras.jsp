@@ -39,7 +39,7 @@ data-backdrop="static">
                       <div class="modal-body">
                       <b>Preço: </b>R$<%=produto.getPreco() %><br>
                       <b>Medida: </b><%=produto.getMedida()%><br>
-                      <b>Disponível: </b><span id ="disponivel"><%=produto.getQuantidade() %></span><br><br>
+                      <b>Disponível: </b><span id ="disponivel"><%=produto.getQuantidade()%></span><br><br>
                       <div class="col-md-2 mb-2">
                       <label>Quantidade:</label>                      
                       <input type = "number" min = 1 id = "quantidade" name = "quantidade">
@@ -54,16 +54,20 @@ data-backdrop="static">
                 </div>
                 
                 <script type="text/javascript">
-                var disponivel = document.getElementById('disponivel').innerText;
+                window.onload = function() {
+                	document.getElementById("salvar").disabled = true;
+                }
+                var disponivel = parseInt(document.getElementById('disponivel').innerText);
                 document.getElementById("quantidade").addEventListener('focusout', function() {
                 	if(document.getElementById("quantidade").value > disponivel){
                 		document.getElementById("salvar").disabled = true;
                 	}else{
                 		document.getElementById("salvar").disabled = false;
                 	}
-                	 if(document.getElementById("quantidade").value < 0){
+                	 if(document.getElementById("quantidade").value <= 0){
                 		document.getElementById("salvar").disabled = true;
-                	}
+                	}                
+
                 });
                 </script>
 </body>
