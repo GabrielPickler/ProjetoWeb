@@ -37,13 +37,14 @@ data-backdrop="static">
                         </a>
                       </div>
                       <div class="modal-body">
-                      <b>Preço: </b>R$<%=produto.getPreco() %><br>
+                      <b>Preço: </b>R$<span id = "preco"><%=produto.getPreco() %></span><br>
                       <b>Medida: </b><%=produto.getMedida()%><br>
                       <b>Disponível: </b><span id ="disponivel"><%=produto.getQuantidade()%></span><br><br>
                       <div class="col-md-2 mb-2">
                       <label>Quantidade:</label>                      
-                      <input type = "number" min = 1 id = "quantidade" name = "quantidade">
+                      <input type = "number" min = 1 id = "quantidade" name = "quantidade">                     
                       </div>
+                      <br><b>Total: R$<span id = "total"></span></b>
                       </div>
                       <div class="modal-footer">
                         <button id = "salvar" type="button" class="btn btn-primary">Solicitar</button>
@@ -61,11 +62,16 @@ data-backdrop="static">
                 document.getElementById("quantidade").addEventListener('focusout', function() {
                 	if(document.getElementById("quantidade").value > disponivel){
                 		document.getElementById("salvar").disabled = true;
+                		document.getElementById("total").innerHTML = "";
                 	}else{
                 		document.getElementById("salvar").disabled = false;
+                		var calcula = parseFloat(document.getElementById("preco").innerText) * document.getElementById("quantidade").value;
+                		var total = calcula.toFixed(2);
+                		document.getElementById("total").innerHTML = total;
                 	}
                 	 if(document.getElementById("quantidade").value <= 0){
                 		document.getElementById("salvar").disabled = true;
+                		document.getElementById("total").innerHTML = "";
                 	}                
 
                 });
