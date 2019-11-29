@@ -10,6 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="lightbox.css" rel="stylesheet" />
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
 crossorigin="anonymous"></script>
@@ -79,9 +81,7 @@ body {
                 <tr>
                         <th scope="row"><%=produto.getIdProduto()%></th>
                         <td><%=produto.getNome()%></td>
-                        <td><a class="image-link" href="https://scontent.fbfh1-2.fna.fbcdn.net/v/t1.6435-9/32953086_1693281210707967_551886431199428608_n.jpg?_nc_cat=104&_nc_ohc=VOEMcXmpWQ4AQmMDHSwp2z
-xs1VPeoYWampapU1XO09ZQCrIfp4F5j8Htw&_nc_ht=scontent.fbfh1-2.fna&oh=4222
-e9cae46f9d19d429bda03d8d5039&oe=5E7E1D33"><label>Abrir imagem</label></a></td>
+                        <td><a data-lightbox="image-1" data-title="Produto" class="image-link" href="<%=produto.getImagem()%>" ><label>Abrir imagem</label></a></td>
                         <td><%=produto.getMedida()%></td>
                         <td><%=produto.getQuantidade()%></td>
                         <td><a id="produto<%=produto.getIdProduto()%>" class="btn btn-primary btn-sm" role="button" href="solicitarController?id=<%=produto.getIdProduto()%>"><label>Comprar</label></a></td>
@@ -94,5 +94,7 @@ e9cae46f9d19d429bda03d8d5039&oe=5E7E1D33"><label>Abrir imagem</label></a></td>
         <%
                 }
         %>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="lightbox.js"></script>
 </body>
 </html>
