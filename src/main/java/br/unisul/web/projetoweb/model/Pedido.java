@@ -41,6 +41,10 @@ public class Pedido {
 	public Pedido() {
 	}
 	
+	public Pedido(double total) {
+		this.total = total;
+	}
+	
 	public Pedido(Date data, int quantidade, double total, Usuario usuario, Produto produto) {	
 		this.data = data;
 		this.quantidade = quantidade;

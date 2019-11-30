@@ -3,6 +3,7 @@ package br.unisul.web.projetoweb.dao.jpa;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import br.unisul.web.projetoweb.dao.JPAUtil;
 import br.unisul.web.projetoweb.model.Pedido;
@@ -20,6 +21,10 @@ public class PedidoDao {
 
 	public List<Pedido> findAll() {
 		return entityManager.createQuery("SELECT o from Pedido o", Pedido.class).getResultList();
+	}
+
+	public Double total() {
+		return entityManager.createQuery("SELECT sum(total) from Pedido o", Double.class).getSingleResult();
 	}
 
 	public boolean delete(int idPedido) {
