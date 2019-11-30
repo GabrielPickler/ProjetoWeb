@@ -31,14 +31,22 @@ public class Pedido {
 	@Column(name = "total")
 	private double total;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
 	private Usuario usuario;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idProduto", referencedColumnName = "idProduto")
 	private Produto produto;	
 	
 	public Pedido() {
+	}
+	
+	public Pedido(Date data, int quantidade, double total, Usuario usuario, Produto produto) {	
+		this.data = data;
+		this.quantidade = quantidade;
+		this.total = total;
+		this.usuario = usuario;
+		this.produto = produto;
 	}
 	
 	public Pedido(int idPedido, Date data, int quantidade, double total, Usuario usuario, Produto produto) {

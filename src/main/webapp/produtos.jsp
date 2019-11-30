@@ -27,12 +27,6 @@ body {
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-=======
-		if (request.getSession().getAttribute("login") == null) {
-%>
-<b>Tentativa de login inesperada</b>
->>>>>>> 0d50b2d85322802ac5bafb817e79b71efd7bd8c6
 
      <nav class="navbar navbar-dark bg-primary">
                 <form class="form-inline">
@@ -97,6 +91,5 @@ body {
         %>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="lightbox.js"></script>
-<%}%>
 </body>
 </html>
