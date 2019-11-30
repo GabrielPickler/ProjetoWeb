@@ -1,3 +1,4 @@
+<%@ page import="br.unisul.web.projetoweb.dao.jpa.ProdutoDao"%>
 
 <%@ page import="br.unisul.web.projetoweb.model.Produto"%>
 
@@ -24,7 +25,9 @@ crossorigin="anonymous"></script>
   </head>
   <body>
 <%
-Produto produto=(Produto)request.getAttribute("produto");
+ProdutoDao produtoDao=new ProdutoDao();
+                Produto produto = produtoDao.findById(Integer.parseInt(request.getParameter("id")));
+
 %>
                 <div class="modal fade" id="modalSolicitar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true" data-keyboard="false"
 data-backdrop="static">

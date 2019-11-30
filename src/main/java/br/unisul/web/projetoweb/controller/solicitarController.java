@@ -14,7 +14,7 @@ import br.unisul.web.projetoweb.model.Produto;
 @WebServlet("/solicitarController")
 public class solicitarController extends HttpServlet {
         private static final long serialVersionUID = 1L;
-        
+
         private ProdutoDao produtoDao = new ProdutoDao();
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,6 @@ public class solicitarController extends HttpServlet {
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Produto produto = produtoDao.findById(id);
-                request.setAttribute("produto", produto);
                 request.getRequestDispatcher("/compras.jsp?id=" + id).forward(request, response);
         }
 
