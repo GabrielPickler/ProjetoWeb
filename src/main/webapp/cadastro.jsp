@@ -7,6 +7,10 @@
     	<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 	    <style>
+	    #formulario{
+	    margin-left: 15px;
+	    }
+	    
 	    body{
 	    background-color: #f5f5f5;
 	    }
@@ -58,8 +62,9 @@
 	<b><font size="10"><label>Cadastro de Usuário</label></font></b>
 	<hr color="black">
 	<br>
-	<form class="needs-validation" novalidate action="cadastroController">
+	<form id = "formulario" class="needs-validation" novalidate action="cadastroController">
 		<div class="col-md-4 mb-3">
+		<div class = row>
 			<label for="usuario">Usuário *</label> <input type="text"
 				class="form-control" id="usuario"
 				placeholder="Digite seu usuário" value="" required="required" name = "login">
@@ -67,29 +72,39 @@
           Campo obrigatório.
  			</div>
 		</div>
+		</div>
 		<div class="col-md-4 mb-3">
+		<div class = row>
 			<label for="senha">Senha *</label> <input type="password"
 				name="senha" class="form-control" id="senha"
 				placeholder="Digite sua senha" value="" required="required">
 			<div class="invalid-feedback">Campo obrigatório.</div>
 		</div>
+		</div>
 		<div class="col-md-4 mb-3">
+		<div class = row>
 			<label for="csenha">Confirmar a senha *</label> <input
 				type="password" name="csenha" class="form-control"
 				id="csenha" placeholder="Confirme sua senha" value=""
 				required="required">
-			<div class="invalid-feedback">Campo obrigatório</div>
+			<div class="invalid-feedback">Campo obrigatório</div>		
 		</div>
+		<br>
+		</div>
+		
 		<label><b>Dados Pessoais</b></label>
+		<br>
+		<br>
 		<div class="col-md-3 mb-3">
+		<div class = row>
 			<label for="nome">Nome *</label> <input type="text"
 				class="form-control" name="nome" id="nome"
 				placeholder="Digite seu nome" required = "required">
 			<div class="invalid-feedback"></div>
 		</div>
-		
+		</div>
 		<div class="form-row">
-		<div class="col-md-2 mb-2">
+		<div class="col-md-2 mb-2" >
 			<label for="nascimento">Data de nascimento *</label> <input
 				type="date" class="form-control" name="nascimento"
 				id="nascimento" required = "required">
@@ -114,10 +129,12 @@
 			<div class="invalid-feedback">Campo obrigatório.</div>
 		</div>
 		<div class="col-md-3 mb-3">
+		<div class = row>
 			<label for="cep">CEP *</label> <input type="text"
 				class="form-control" name="cep" id="cep" placeholder="CEP" required = "required">
 			<div class="invalid-feedback">Campo obrigatório.</div>
 			<div id = "respostaCep" class="invalid-feedback">
+		</div>
 		</div>
 		</div>
 		<div class="form-row">
@@ -126,7 +143,7 @@
 					type="text" class="form-control" name="rua" id="rua"
 					placeholder="Logradouro">
 			</div>
-			<div class="col-md-3 mb-3">
+			<div class="col-md-1 mb-1">
 				<label for="numero">Número</label> <input type="number"
 					class="form-control" name="numero" id="numero"
 					placeholder="Número">				
@@ -156,6 +173,7 @@
 					placeholder="Digite seu bairro">
 			</div>
 		</div>
+		<br>	
 		<button id ="cadastrar" class="btn btn-primary" type="submit">Cadastrar</button>
 		<a class="btn btn-primary" id="limpar" href= "#" role="button">Limpar</a>
 		<a class="btn btn-primary" href="login.jsp" role="button">Voltar</a>

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,9 +31,17 @@ public class Produto {
 	@Column(name = "preco")
 	private double preco;
 
-	@ManyToMany(mappedBy = "produtos")
-	private List<Usuario> usuario = new ArrayList<Usuario>();
+	@OneToMany(mappedBy = "produto")
+	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void addPedidos(Pedido pedido) {
+		pedidos.add(pedido);
+	}
 
 	public Produto(int idProduto) {
 		this.setIdProduto(idProduto);
@@ -41,9 +50,6 @@ public class Produto {
 	public Produto() {
 	}	
 
-	public List<Usuario> getUsuario() {
-		return usuario;
-	}
 
 	public int getIdProduto() {
 		return idProduto;
@@ -91,10 +97,6 @@ public class Produto {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
-	}
-	
-	public void addUsuario(Usuario usuario) {
-		this.usuario.add(usuario);
 	}
 
 }

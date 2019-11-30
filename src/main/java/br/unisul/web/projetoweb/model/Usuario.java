@@ -11,8 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -23,7 +22,7 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_generator")
-	@SequenceGenerator(name="usuario_generator", sequenceName = "usuario_sequence",allocationSize = 1)
+	@SequenceGenerator(name = "usuario_generator", sequenceName = "usuario_sequence", allocationSize = 1)
 	@Column(name = "idUsuario")
 	private int idUsuario;
 	@Column(name = "login", length = 100)
@@ -38,15 +37,24 @@ public class Usuario {
 	private long idade;
 	@Column(name = "sexo", length = 10)
 	private String sexo;
-	 @OneToOne(cascade = CascadeType.ALL)
-	 @JoinColumn(name = "idEndereco", referencedColumnName = "idEndereco")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idEndereco", referencedColumnName = "idEndereco")
 	private Endereco endereco;
-	@ManyToMany
-	@JoinTable(name = "jpa_usuario_produto", joinColumns = @JoinColumn(name = "idUsuario"), inverseJoinColumns = @JoinColumn(name = "idProduto"))
-	private List<Produto> produtos = new ArrayList<>();
+
+	@OneToMany(mappedBy = "usuario")
+	private List<Pedido> pedidos = new ArrayList<>();
 
 	public Usuario(int idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void addPedidos(Pedido pedido) {
+		pedidos.add(pedido);
 	}
 
 	public Usuario() {
@@ -58,10 +66,6 @@ public class Usuario {
 		this.nome = nome;
 		this.nascimento = nascimento;
 		this.sexo = sexo;
-	}
-
-	public List<Produto> getProdutos() {
-		return produtos;
 	}
 
 	public int getIdUsuario() {
@@ -126,14 +130,6 @@ public class Usuario {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
-
-	public void addProduto(Produto produto) {
-		produtos.add(produto);
-	}
-
-	public void removeProduto(Produto produto) {
-		produtos.remove(produto);
 	}
 
 }
