@@ -36,24 +36,26 @@ data-backdrop="static">
                           <span aria-hidden="true">&times;</span>
                         </a>
                       </div>
-                      <div class="modal-body">
+                      <form action="comprasController">
+                      <div class="modal-body">                     
                       <b>Preço: </b>R$<span id = "preco"><%=produto.getPreco() %></span><br>
                       <b>Medida: </b><%=produto.getMedida()%><br>
                       <b>Disponível: </b><span id ="disponivel"><%=produto.getQuantidade()%></span><br><br>
-                      <div class="col-md-2 mb-2">
+                      <div class="col-md-2 mb-2"> 
+                      <input type="hidden" id="id" name="id" value="<%=produto.getIdProduto()%>" />                     
                       <label>Quantidade:</label>                      
                       <input type = "number" min = 1 id = "quantidade" name = "quantidade">                     
                       </div>
                       <br><b>Total: R$<span id = "total"></span></b>
                       </div>
                       <div class="modal-footer">
-                        <button id = "salvar" type="button" class="btn btn-primary">Solicitar</button>
-                        <a role="button" class="btn btn-secondary" href = "produtos.jsp">Voltar</a>                        
+                        <button type = "submit"  id = "salvar" type="button" class="btn btn-primary">Solicitar</button>
+                        <a role="button" class="btn btn-secondary" href = "produtos.jsp">Voltar</a>
+                         </div>
+                        </form>                                               
                       </div>
                     </div>
-                  </div>
-                </div>
-                
+                  </div>                                              
                 <script type="text/javascript">
                 window.onload = function() {
                 	document.getElementById("salvar").disabled = true;

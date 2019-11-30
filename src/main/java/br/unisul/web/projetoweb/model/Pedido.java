@@ -50,6 +50,10 @@ public class Pedido {
 		this.produto = produto;
 	}
 	
+	public Pedido(int idPedido) {
+		
+	}
+
 	public Date getData() {
 		return data;
 	}
