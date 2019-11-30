@@ -33,8 +33,8 @@ body {
 	%>
 	<nav class="navbar navbar-dark bg-primary">
 		<form class="form-inline">
-			<a class="btn btn-primary" role="button" href="http://localhost:8081/projetoweb/loginusuario"><label>Início</label></a>
-			<a class="btn btn-primary" role="button" href="http://localhost:8081/projetoweb/produtos.jsp?id=<%=usuario.getIdUsuario()%>"><label>Produtos</label></a>
+			<a class="btn btn-primary" role="button" href="http://localhost:8080/projetoweb/loginusuario"><label>Início</label></a>
+			<a class="btn btn-primary" role="button" href="http://localhost:8080/projetoweb/produtos.jsp?id=<%=usuario.getIdUsuario()%>"><label>Produtos</label></a>
 			<a class="btn btn-primary" role="button" href="#"><label>Relatório</label></a>
 			<a class="btn btn-primary" role="button" href="saidaController"><label>Sair</label></a>
 		</form>

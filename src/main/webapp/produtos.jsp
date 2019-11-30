@@ -13,7 +13,7 @@
 <link href="lightbox.css" rel="stylesheet" />
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,8 @@ body {
 }
 </style>
 </head>
-<body>        
+<body>
+
      <nav class="navbar navbar-dark bg-primary">
                 <form class="form-inline">
                         <a class="btn btn-primary" role="button" href="menu.jsp"><label>Início</label></a>
@@ -50,17 +51,11 @@ body {
                 int idUsuario = (int) request.getSession().getAttribute("id");
         %>
 
-        <%
-                if (request.getAttribute("produtos") == null) {
-                                request.getRequestDispatcher("UsuarioController?id=" + idUsuario + "&acao=listarprodutos")
-                                                .forward(request, response);
-                        }
-        %>
 
         <%
-                List<Produto> produtos = (List) request.getAttribute("produtos");
+			List<Produto> produtos = produtoDao.findAll();
         %>
-        
+
 
         <table class="table table-hover">
                 <thead>
