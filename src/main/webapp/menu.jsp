@@ -23,14 +23,19 @@ body {
 	margin-left: -50px;
 }
 </style>
+    <script type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+    </script>
 </head>
-<body>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();">
+
 	<%
 		if (request.getSession().getAttribute("login") == null) {
 	%>
 	<b>Tentativa de login inesperada recusada</b>
 	<%
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		response.sendRedirect("login.jsp");
 		} else {
 	%>
 	<%
@@ -51,12 +56,12 @@ body {
 		</form>
 	</nav>
 	<h1>
-		Bem vindo, <%=usuario.getNome()%></h1>
+		Bem vindo,
+		<%=usuario.getNome()%></h1>
 	<img id="imagem"
 		src="https://www.proteste.org.br/-/media/proteste/images/home/supermercados/guia-supermercados.png?rev=109582c2-a645-4989-bfb5-9df64272dc89"
 		class="rounded">
 	<%
 		}
 	%>
-</body>
 </html>

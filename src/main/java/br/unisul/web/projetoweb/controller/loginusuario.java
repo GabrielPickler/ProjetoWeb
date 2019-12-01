@@ -25,7 +25,7 @@ public class loginusuario extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		if (verificaExisteUsuario(login) == true) {
@@ -54,6 +54,7 @@ public class loginusuario extends HttpServlet {
 		}
 
 	}
+	
 
 	private boolean verificaSenha(String senha, String login) {
 

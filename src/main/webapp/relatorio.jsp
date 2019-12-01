@@ -29,8 +29,12 @@ body {
 	margin-left: 80%;
 }
 </style>
+<script type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+    </script>
 </head>
-<body>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();">
 
 	<nav class="navbar navbar-dark bg-primary">
 		<form class="form-inline">

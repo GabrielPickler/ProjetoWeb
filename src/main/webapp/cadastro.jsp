@@ -30,6 +30,10 @@ crossorigin="anonymous">
 	          font-size: 3.5rem;
 	        }
 	      }  
+	      
+	      .botoes{
+	      margin-left: 100%;
+	      }
       </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -132,7 +136,7 @@ crossorigin="anonymous">
 		<div class="col-md-3 mb-3">
 		<div class = row>
 			<label for="cep">CEP *</label> <input type="text"
-				class="form-control" name="cep" id="cep" placeholder="CEP" required = "required">
+				class="form-control" name="cep" id="cep" maxlength="9" placeholder="CEP" required = "required">
 			<div class="invalid-feedback">Campo obrigatório.</div>
 			<div id = "respostaCep" class="invalid-feedback">
 		</div>
@@ -174,10 +178,12 @@ crossorigin="anonymous">
 					placeholder="Digite seu bairro">
 			</div>
 		</div>
-		<br>	
+		<br>
+		<span id ="botoes">	
 		<button id ="cadastrar" class="btn btn-primary" type="submit">Cadastrar</button>
 		<a class="btn btn-primary" id="limpar" href= "#" role="button">Limpar</a>
 		<a class="btn btn-primary" href="login.jsp" role="button">Voltar</a>
+		</span>
 		
 	</form>   
     <script type = "text/javascript" src = "procuraCep.js"></script> 
