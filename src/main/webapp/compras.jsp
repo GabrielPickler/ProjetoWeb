@@ -63,29 +63,34 @@
 				<form action="comprasController">
 					<div class="modal-body">
 						<b>Preço: </b>R$<span id="preco"><%=produto.getPreco()%></span><br>
-						<b>Medida: </b><%=produto.getMedida()%><br> <b>Disponível:
-						</b><span id="disponivel"><%=produto.getQuantidade()%></span><br>
+						<b>Medida: </b><%=produto.getMedida()%><br>
+						<b>Disponível:</b><span id="disponivel"><%=produto.getQuantidade()%></span>
+						<%if(produto.getQuantidade() <= 0){%>
+						<br><br><b><font color = "red">PRODUTO INDISPONÍVEL</font></b><%} %>							
+							<br>											
 						<br>
 						<div class="col-md-2 mb-2">
-							<input type="hidden" id="id" name="id"
-								value="<%=produto.getIdProduto()%>" /> <label>Quantidade:</label>
+							<input type="hidden" id="id" name="id" value="<%=produto.getIdProduto()%>"> 
+							<label>Quantidade:</label>
 							<input type="number" min=1 id="quantidade" name="quantidade">
 						</div>
+						<div id = "erro" class="invalid-feedback"></div>
 						<br>
 						<b>Total: R$<span id="total"></span></b>
 					</div>
 					<div class="modal-footer">
-						<button type="submit" id="salvar" type="button"
-							class="btn btn-primary">Solicitar</button>
+						<button type="submit" id="salvar" type="button" class="btn btn-primary">Solicitar</button>
 						<a role="button" class="btn btn-secondary" href="produtos.jsp">Voltar</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+	
 	<script type="text/javascript">
 		window.onload = function() {
 			document.getElementById("salvar").disabled = true;
+			$("#erro").hide();
 		}
 		var disponivel = parseInt(document.getElementById('disponivel').innerText);
 		document
@@ -96,6 +101,8 @@
 							if (document.getElementById("quantidade").value > disponivel) {
 								document.getElementById("salvar").disabled = true;
 								document.getElementById("total").innerHTML = "";
+								$("#erro").html("A quantidade deve ser menor que o número de produto disponíveis.");
+								$("#erro").show();
 							} else {
 								document.getElementById("salvar").disabled = false;
 								var calcula = parseFloat(document
@@ -103,6 +110,7 @@
 										* document.getElementById("quantidade").value;
 								var total = calcula.toFixed(2);
 								document.getElementById("total").innerHTML = total;
+								$("#erro").hide();
 							}
 							if (document.getElementById("quantidade").value <= 0) {
 								document.getElementById("salvar").disabled = true;
