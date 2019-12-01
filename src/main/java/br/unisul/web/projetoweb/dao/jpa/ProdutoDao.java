@@ -20,7 +20,7 @@ public class ProdutoDao {
 	}
 
 	public List<Produto> findAll() {
-		return entityManager.createQuery("SELECT r from Produto r", Produto.class).getResultList();
+		return entityManager.createQuery("SELECT r from Produto r ORDER BY r.idProduto", Produto.class).getResultList();
 	}
 
 	public boolean delete(int idProduto) {
