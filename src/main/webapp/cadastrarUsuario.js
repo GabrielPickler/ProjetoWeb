@@ -3,11 +3,11 @@
 	document.getElementById("nascimento").addEventListener('focusout', function() {
     var nascimento = new Date(this.value);
     if(isDate_(this.value)){
-        document.getElementById("idade").value = calculateAge(this.value);
-        if((document.getElementById("idade").value > 120) || (document.getElementById("idade").value < 5)){
+    	$("#idade").val(calculateAge(this.value));
+        if(($("#idade").val() > 120) || ($("#idade").val() < 5)){       	
         	$("#respostaIdade").show();
-        	$('#respostaIdade').html("Sua idade deve ser maior que 5 anos e menor que 120 anos.");        	
-    	}else{
+        	$('#respostaIdade').html("Sua idade deve ser maior que 5 anos e menor que 120 anos.");       	
+    	}else{    		
     		$("#respostaIdade").hide();
     	}
     }

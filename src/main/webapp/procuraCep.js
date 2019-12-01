@@ -32,12 +32,14 @@
                                 $("#cidade").val(dados.localidade);
                                 $("#uf").val(dados.uf);
                                 $("#respostaCep").hide();
+                                $("#cadastrar").attr("disabled", false);
                             } //end if.
                             else {
                                 //CEP pesquisado não foi encontrado.
                                 limpa_formulário_cep();
                                 $("#respostaCep").show();
                                 $("#respostaCep").html("CEP não encontrado.");
+                                $("#cadastrar").attr("disabled", true);
                             }
                         });
                     } //end if.
@@ -46,6 +48,7 @@
                         limpa_formulário_cep();
                         $("#respostaCep").show();
                         $("#respostaCep").html("Formato de CEP inválido.");
+                        $("#cadastrar").attr("disabled", true);
                     }
                 } //end if.
                 else {

@@ -7,10 +7,9 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
 
-    <!-- Bootstrap core CSS -->
 <link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
 crossorigin="anonymous">
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <style>
       .bd-placeholder-img {
@@ -43,7 +42,8 @@ crossorigin="anonymous">
   if(request.getAttribute("mensagem")!=null){
 %>
 <div class="alert alert-danger" role="alert">
-<b><%=request.getAttribute("mensagem") %></b><%} %>
+<b><%=request.getAttribute("mensagem") %></b>
+<%}%>
 </div>
 
   <div class="dropdown-divider"></div>

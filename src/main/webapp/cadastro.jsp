@@ -4,7 +4,8 @@
     <html>
     <head>
     <title>Cadastro</title>
-    	<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+crossorigin="anonymous">
 
 	    <style>
 	    #formulario{
@@ -31,9 +32,7 @@
 	      }  
       </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>   
-    <script type = "text/javascript" src = "procuraCep.js"></script> 
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
            
       </head>
       
@@ -55,7 +54,7 @@
 	 <%
 	  if(request.getAttribute("erro")!=null){
 	%>
-	<div class="" role="alert">
+	<div class="alert alert-danger" role="alert">
 	 <b><%=request.getAttribute("erro") %></b><%} %>
 	</div>
 	
@@ -87,7 +86,8 @@
 				type="password" name="csenha" class="form-control"
 				id="csenha" placeholder="Confirme sua senha" value=""
 				required="required">
-			<div class="invalid-feedback">Campo obrigatório</div>		
+			<div class="invalid-feedback">Campo obrigatório</div>
+			<div id = "respostaSenha" class="invalid-feedback"></div>					
 		</div>
 		<br>
 		</div>
@@ -113,21 +113,22 @@
 		<div class="col-md-1 mb-1">
 		<label for = "idade">Idade</label>
 		<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Sua idade deve ser maior que 5 anos e menor que 120 anos"></span>
-		<input type="number" name = "idade" class="form-control" id = "idade" min ="5" max ="120" disabled>		
+		<input type="number" name = "idade" class="form-control" id = "idade" min ="5" max ="120" readonly>	
 		<div id = "respostaIdade" class="invalid-feedback">
 		</div>
 		</div>
 		</div>
-		<br>
-		<div class="col-md-3 mb-3">
-			<label for="sexo">Sexo *</label> <input type="radio"
-				name="sexo" id="sexo1" value = "Masculino"
-				placeholder="Digite seu nome" required = "required"><label> Masculino</label>
-				<input type="radio"
-				name="sexo" id="sexo2" value = "Feminino"
-				placeholder="Digite seu nome" required = "required"><label> Feminino</label>
-			<div class="invalid-feedback">Campo obrigatório.</div>
-		</div>
+		<br>			
+			<label for="sexo">Sexo *: </label>
+			<div class="custom-control custom-radio custom-control-inline">	
+			<input type="radio" class="custom-control-input" name="sexo" id="sexo1" value = "Masculino"  required><label class="custom-control-label" for = "sexo1">Masculino</label>			
+		</div>	
+		<div class="custom-control custom-radio custom-control-inline">
+			<input type="radio" class="custom-control-input" name="sexo" id="sexo2" value = "Feminino" required ><label class="custom-control-label" for = "sexo2">Feminino</label>			
+			<div class="invalid-feedback"></div>
+			</div>
+			<br>
+			<br>		
 		<div class="col-md-3 mb-3">
 		<div class = row>
 			<label for="cep">CEP *</label> <input type="text"
@@ -178,7 +179,34 @@
 		<a class="btn btn-primary" id="limpar" href= "#" role="button">Limpar</a>
 		<a class="btn btn-primary" href="login.jsp" role="button">Voltar</a>
 		
-	</form>
+	</form>   
+    <script type = "text/javascript" src = "procuraCep.js"></script> 
+	<script type = "text/javascript" src = "cadastrarUsuario.js"></script>
+	<script type="text/javascript">
+	document.getElementById("nascimento").addEventListener('focusout', function() {
+		if(($("#idade").val() > 120) || ($("#idade").val() < 5)){
+			$("#cadastrar").attr("disabled", true);
+		}else{
+			$("#cadastrar").attr("disabled", false);
+		}
+	});
+	</script>
+	  
+	<script type = "text/javascript">
+		$("#respostaSenha").hide();
+		document.getElementById("csenha").addEventListener('focusout', function() {
+			if($("#csenha").val() != $("#senha").val() ){
+				$("#cadastrar").attr("disabled", true);
+				$("#respostaSenha").html("Suas senhas não coincidem. Tente novamente.");
+				$("#respostaSenha").show();
+			}else{
+				$("#cadastrar").attr("disabled", false);
+				$("#respostaSenha").hide();
+			}
+		});
+		
+	</script>
+	
 	<script>
 		(function() {
 		  'use strict';
@@ -196,7 +224,6 @@
 		  }, false);
 		})();
 </script>
-<script type = "text/javascript" src = "cadastrarUsuario.js"></script>
 <script type = "text/javascript" src = "limpaCadastro.js"></script>
 </body>
 </html>

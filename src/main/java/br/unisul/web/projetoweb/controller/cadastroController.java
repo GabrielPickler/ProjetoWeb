@@ -66,18 +66,9 @@ public class cadastroController extends HttpServlet {
 			String bairro = request.getParameter("bairro");
 			String cidade = request.getParameter("cidade");
 			String uf = request.getParameter("uf");
+			int years = Integer.parseInt(request.getParameter("idade"));
 
 
-		Calendar c = Calendar.getInstance();
-		c.setTime(nascimento);
-
-		int ano = c.get(Calendar.YEAR);
-		int mes = 1 + c.get(Calendar.MONTH);
-		int dia = c.get(Calendar.DAY_OF_MONTH);
-		LocalDate start = LocalDate.of(ano, mes, dia);
-		LocalDate end = LocalDate.now();
-		long years = ChronoUnit.YEARS.between(start, end);
-		request.setAttribute("idade", years);
 		if(years < 5 || years > 120) {
 			request.setAttribute("erroIdade", "Sua idade deve ser maior que 5 anos ou menor que 120 anos");
 			request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
