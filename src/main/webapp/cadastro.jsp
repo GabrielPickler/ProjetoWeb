@@ -69,7 +69,7 @@
 		<div class = row>
 			<label for="usuario">Usuário *</label> <input type="text"
 				class="form-control" id="usuario"
-				placeholder="Digite seu usuário" value="" required="required" name = "login">
+				placeholder="Digite seu usuário" value="" required="required" name = "login" size="99" maxlength="99">
 			<div class="invalid-feedback">
           Campo obrigatório.
  			</div>
@@ -79,7 +79,7 @@
 		<div class = row>
 			<label for="senha">Senha *</label> <input type="password"
 				name="senha" class="form-control" id="senha"
-				placeholder="Digite sua senha" value="" required="required">
+				placeholder="Digite sua senha" value="" required="required" size="10" maxlength="10">
 			<div class="invalid-feedback">Campo obrigatório.</div>
 		</div>
 		</div>
@@ -88,7 +88,7 @@
 			<label for="csenha">Confirmar a senha *</label> <input
 				type="password" name="csenha" class="form-control"
 				id="csenha" placeholder="Confirme sua senha" value=""
-				required="required">
+				required="required" size="10" maxlength="10">
 			<div class="invalid-feedback">Campo obrigatório</div>
 			<div id = "respostaSenha" class="invalid-feedback"></div>					
 		</div>
@@ -100,7 +100,7 @@
 		<br>
 		<div class="col-md-3 mb-3">
 		<div class = row>
-			<label for="nome">Nome *</label> <input type="text"
+			<label for="nome">Nome *</label> <input type="text" size="99" maxlength="99"
 				class="form-control" name="nome" id="nome"
 				placeholder="Digite seu nome" required = "required">
 			<div class="invalid-feedback"></div>
@@ -144,35 +144,35 @@
 		<div class="form-row">
 			<div class="col-md-6 mb-3">
 				<label for="rua">Logradouro</label> <input
-					type="text" class="form-control" name="rua" id="rua"
+					type="text" class="form-control" name="rua" id="rua" size="99" maxlength="99"
 					placeholder="Logradouro">
 			</div>
 			<div class="col-md-1 mb-1">
 				<label for="numero">Número</label> <input type="number"
 					class="form-control" name="numero" id="numero"
-					placeholder="Número">				
+					placeholder="Número" min="1">				
 			</div>
 		</div>
 		<div class="form-row">
 			<div class="col-md-3 mb-3">
 				<label for="complemento">Complemento</label> <input
-					type="text" class="form-control" name="complemento"
+					type="text" class="form-control" name="complemento" size="50" maxlength="50"
 					id="complemento" placeholder="Complemento">
 			</div>
 			<div class="col-md-3 mb-3">
 				<label for="uf">Estado</label> <input type="text"
-					class="form-control" name="uf" id="uf"
+					class="form-control" name="uf" id="uf" size="2" maxlength="2"
 					placeholder="Digite seu estado">
 			</div>
 		</div>
 		<div class="form-row">
 			<div class="col-md-3 mb-3">
-				<label for="cidade">Cidade</label> <input type="text"
+				<label for="cidade">Cidade</label> <input type="text" size="99" maxlength="99"
 					class="form-control" name="cidade" id="cidade"
 					placeholder="Digite sua cidade">
 			</div>
 			<div class="col-md-3 mb-3">
-				<label for="bairro">Bairro</label> <input type="text"
+				<label for="bairro">Bairro</label> <input type="text" size="99" maxlength="99"
 					class="form-control" name="bairro" id="bairro"
 					placeholder="Digite seu bairro">
 			</div>

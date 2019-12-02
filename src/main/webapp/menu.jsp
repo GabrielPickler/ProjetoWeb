@@ -47,9 +47,9 @@ body {
 	<nav class="navbar navbar-dark bg-primary">
 		<form class="form-inline">
 			<a class="btn btn-primary" role="button"
-				href="http://localhost:8081/projetoweb/menu.jsp"><label>Início</label></a>
+				href="http://localhost:8080/projetoweb/menu.jsp"><label>Início</label></a>
 			<a class="btn btn-primary" role="button"
-				href="http://localhost:8081/projetoweb/produtos.jsp?id=<%=usuario.getIdUsuario()%>"><label>Produtos</label></a>
+				href="http://localhost:8080/projetoweb/produtos.jsp?id=<%=usuario.getIdUsuario()%>"><label>Produtos</label></a>
 			<a class="btn btn-primary" role="button" href="relatorio.jsp"><label>Relatório</label></a>
 			<a id="sair" class="btn btn-primary" role="button"
 				href="saidaController"><label>Sair</label></a>

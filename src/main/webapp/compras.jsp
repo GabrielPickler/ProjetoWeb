@@ -56,9 +56,7 @@
 					<h5 class="modal-title" id="TituloModalCentralizado">
 						Solicitar
 						<%=produto.getNome()%></h5>
-					<a role="button" class="close" href="produtos.jsp"
-						aria-label="Fechar"> <span aria-hidden="true">&times;</span>
-					</a>
+
 				</div>
 				<form action="comprasController">
 					<div class="modal-body">
@@ -80,7 +78,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="submit" id="salvar" type="button" class="btn btn-primary">Solicitar</button>
-						<a role="button" class="btn btn-secondary" href="produtos.jsp">Voltar</a>
+						<a role="button" class="btn btn-secondary" href="produtos.jsp">Cancelar</a>
 					</div>
 				</form>
 			</div>
